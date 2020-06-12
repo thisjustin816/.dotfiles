@@ -18,5 +18,5 @@ $appXPackages = @(
     '*xbox*'
 )
 foreach ($app in $appxPackages) {
-    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage
+    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage -ErrorAction SilentlyContinue
 }

@@ -18,10 +18,10 @@ begin {
 
         foreach ($item in $Path) {
             $originalItems = Get-ChildItem -Path $item
-            $syncedItems = Get-ChildItem -Path $Target | Where-Object -NotMatch '\..*'
+            $syncedItems = Get-ChildItem -Path $Target | Where-Object -Property Name -NotMatch '\..*'
             foreach ($item in $originalItems) {
                 if ($syncedItems.Name -contains $item.Name) {
-                    $item | Remove-Item -Force -WhatIf
+                    $item | Remove-Item -Recurse -Force -WhatIf
                     if ($item -is 'System.IO.DirectoryInfo') {
                         #$itemType = 'Junction'
                         $itemType = 'SymbolicLink'
