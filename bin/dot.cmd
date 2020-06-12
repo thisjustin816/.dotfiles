@@ -39,6 +39,7 @@ if "%1"=="update" (
 if "%1"=="save" (
     set "valid=true"
     pushd %~dp0..
+    git add .
     git commit -a -m ".dotfiles saved by dot update"
     git push
     popd
