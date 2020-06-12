@@ -18,7 +18,7 @@ begin {
 
         foreach ($item in $Path) {
             $originalItems = Get-ChildItem -Path $item
-            $syncedItems = Get-ChildItem -Path $Target | Where-Object -Property Name -NotMatch '\..*'
+            $syncedItems = Get-ChildItem -Path $Target | Where-Object -Property Name -NotMatch '^\..*$'
             foreach ($item in $originalItems) {
                 if ($syncedItems.Name -contains $item.Name) {
                     $item | Remove-Item -Recurse -Force -WhatIf
@@ -32,7 +32,7 @@ begin {
                     New-Item `
                         -ItemType $itemType `
                         -Path $item.FullName `
-                        -Target "$($Target.Directory)\$($item.Name)" `
+                        -Target "$($Target.PSParentPath)\$($item.Name)" `
                         -WhatIf
                 }
             }
@@ -43,7 +43,7 @@ begin {
 process {
     $WriteProgress = @{
         Activity = '.dotfiles Initialization'
-        Status = 'Downloading the latest .dotfiles...'
+        Status   = 'Downloading the latest .dotfiles...'
     }
     Write-Progress @WriteProgress
     if ( Get-Command -Name 'git' -ErrorAction SilentlyContinue ) {
@@ -53,10 +53,10 @@ process {
         $filePath = '$PSScriptRoot\.MinGit\R00T64\git\git.exe'
     }
     $git = @{
-        FilePath = $filePath
+        FilePath         = $filePath
         WorkingDirectory = $PSScriptRoot
-        NoNewWindow = $true
-        Wait = $true
+        NoNewWindow      = $true
+        Wait             = $true
     }
 
     $WriteProgress['Status'] = 'Configuring Environment...'
@@ -97,7 +97,7 @@ process {
                 . $sync.FullName
             }
         }
-        if ($ItemSync -and ( Get-Item -Path ".\.export-*.ps1" -ErrorAction SilentlyContinue )) {
+        if ($ItemExport -and ( Get-Item -Path ".\.export-*.ps1" -ErrorAction SilentlyContinue )) {
             $exports = & Get-Item -Path ".\.export-*.ps1"
             foreach ($export in $exports) {
                 $itemName = $sync.BaseName.Split('-')[1]

@@ -17,7 +17,10 @@ foreach ($var in $envVariables.Keys) {
 
 if (!( Get-InstalledModule -Name PSSiOps -ErrorAction SilentlyContinue )) {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    iex ((New-Object System.Net.WebClient).DownloadString('https://sidevbin.blob.core.windows.net/files/PowerShell/Install-PSSiOps.ps1'))
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://sidevbin.blob.core.windows.net/files/PowerShell/Install-PSSiOps.ps1'))
 }
 
-Start-CmToolsSetup
+$noInstall = (( Get-Command -Name 'cm' ) -and ( Get-Item -Path '\\127.0.0.1\ScmFeed' ))
+if (!$noInstall) {
+    Start-CmToolsSetup
+}

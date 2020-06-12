@@ -41,6 +41,7 @@ if "%1"=="save" (
     pushd %~dp0..
     git add .
     git commit -a -m ".dotfiles saved by dot update"
+    git pull
     git push
     popd
 )
