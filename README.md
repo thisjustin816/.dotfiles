@@ -19,6 +19,10 @@ More information: [https://dotfiles.github.io/](https://dotfiles.github.io/)
 
 Pulls the latest files, installs all apps and PowerShell modules, applies symbolic links to settings directories, and syncs all configured items.
 
+### `show`
+
+Shows the functional sections that the command can apply to.
+
 ### `sync`
 
 Pulls the latest files, installs all apps and PowerShell modules, and syncs all configured items.

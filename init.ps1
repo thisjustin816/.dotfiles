@@ -2,8 +2,11 @@
 param (
     [String]$UserName = 'Justin Beeson',
     [String]$UserEmail = 'justinbeeson@gmail.com',
+    [AllowNull()]
+    [AllowEmptyString()]
+    [String]$Filter = '*',
     [bool]$Setup = $true,
-    [bool]$SettingsSync = $true,
+    [bool]$InitializeSettings = $true,
     [bool]$ItemSync = $true,
     [bool]$ItemExport = $false
 )
@@ -71,9 +74,20 @@ process {
 
     $WriteProgress['Status'] = 'Gathering Items to Set Up...'
     Write-Progress @WriteProgress
-    $dotFolders = Get-ChildItem -Path $PSScriptRoot -Exclude 'bin' -Directory |
-        Where-Object -Property Name -NotMatch '$\..*^'
+    if ($null -eq $Filter) {
+        $Filter = '*'
+    }
+    if ($Filter -ne '*') {
+        $Filter = "*$Filter*"
+    }
+    $dotFolders = @()
+    $dotFolders += Get-ChildItem -Path $PSScriptRoot -Filter:$Filter -Directory |
+        Where-Object -FilterScript {
+            $_.Name -notmatch '^\..*' -and
+            $_.Name -ne 'bin'
+        }
     foreach ($folder in $dotFolders) {
+        $folder
         $WriteProgress['Status'] = "Configuring $($folder.Name)..."
         Write-Progress @WriteProgress
         Push-Location -Path $folder.FullName
@@ -82,7 +96,7 @@ process {
             Write-Progress @WriteProgress
             . ".\.setup.ps1"
         }
-        if ($SettingsSync -and ( Get-Item -Path ".\.path.ps1" -ErrorAction SilentlyContinue )) {
+        if ($InitializeSettings -and ( Get-Item -Path ".\.path.ps1" -ErrorAction SilentlyContinue )) {
             $WriteProgress['CurrentOperation'] = 'Settings Sync'
             Write-Progress @WriteProgress
             $linkPath = & ".\.path.ps1"

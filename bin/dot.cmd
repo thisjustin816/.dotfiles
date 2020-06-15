@@ -1,12 +1,14 @@
 @echo off
 goto :commands
 :help
-    echo usage: dot [init] [sync] [update] [save] [status] [export] [help]
+    echo usage: dot <command> [section]
     echo:
     echo Command descriptions:
     echo:
     echo   init        Pulls the latest files, installs all apps and PowerShell modules, applies symbolic links to
     echo               settings directories, and syncs all configured items.
+    echo:
+    echo   show        Shows the functional sections that the command can apply to.
     echo:
     echo   sync        Pulls the latest files, installs all apps and PowerShell modules, and syncs all configured items.
     echo:
@@ -26,15 +28,19 @@ goto :eof
 powershell -Command "& {Set-ExecutionPolicy -ExecutionPolicy Bypass -Force}"
 if "%1"=="init" (
     set "valid=true"
-    powershell -Command "& %~dp0\..\init.ps1"
+    powershell -Command "& %~dp0..\init.ps1 -Filter '%2'"
+)
+if "%1"=="show" (
+    set "valid=true"
+    powershell -Command "& %~dp0..\init.ps1 -Filter '%2' -Setup $false -InitializeSettings $false -ItemSync $false -ItemExport $false"
 )
 if "%1"=="sync" (
     set "valid=true"
-    powershell -Command "& %~dp0\..\init.ps1 -Setup $false"
+    powershell -Command "& %~dp0..\init.ps1 -Filter '%2' -Setup $false -InitializeSettings $false"
 )
 if "%1"=="update" (
     set "valid=true"
-    powershell -Command "& %~dp0\..\init.ps1 -Setup $false -SettingsSync $false -ItemSync $false -Export $false"
+    powershell -Command "& %~dp0..\init.ps1 -Filter '%2' -Setup $false -InitializeSettings $false -ItemSync $false"
 )
 if "%1"=="save" (
     set "valid=true"
@@ -53,7 +59,7 @@ if "%1"=="status" (
 )
 if "%1"=="export" (
     set "valid=true"
-    powershell -Command "& %~dp0\..\init.ps1 -Setup $false -SettingsSync $false -ItemSync $false -Export $true"
+    powershell -Command "& %~dp0..\init.ps1 -Filter '%2' -Setup $false -InitializeSettings $false -ItemSync $false -ItemExport $true"
 )
 if "%1"=="help" (
     set "valid=true"
