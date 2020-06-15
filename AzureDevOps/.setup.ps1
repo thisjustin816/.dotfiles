@@ -1,5 +1,8 @@
+if (!( Get-Command Import-PowerShellDataFile -ErrorAction SilentlyContinue )) {
+    Import-Module -Name "C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psd1"
+}
 # This file will contain sensitive information and should not be committed to the repo.
-$envVariables = Import-PowerShellDataFile -Path "$PSScriptRoot\.envVars.psd1"
+$envVariables = Import-PowerShellDataFile -Path $PSScriptRoot\.envVars.psd1
 <# EXAMPLE
 @{
     System_AccessToken = '*********************************************'

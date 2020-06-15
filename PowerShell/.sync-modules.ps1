@@ -6,6 +6,7 @@ Get-ChildItem `
     -ErrorAction SilentlyContinue |
     Get-ChildItem -Directory |
     Where-Object -Property Name -Match '\d*\.\d*\.\d*' |
+    Where-Object -Property Name -NotMatch '.*\.dotfiles.*'
     Get-ChildItem -Filter 'netstandard2.0' -Directory |
     ForEach-Object -Process {
         foreach ($clr in 'fullclr', 'coreclr') {
