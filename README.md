@@ -1,8 +1,6 @@
 # .dotfiles README
 
-I didn't find much on Windows implementations of .dotfiles, so this is my version of it after reading some of the documentation for other operating systems.
-
-> THIS IS A WORK IN PROGRESS
+An original `.dotfiles` implementation for Windows. I didn't find much on Windows implementations of .dotfiles, so this is my version of it after reading some of the documentation for other operating systems.
 
 More information: [https://dotfiles.github.io/](https://dotfiles.github.io/)
 
