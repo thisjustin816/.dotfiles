@@ -5,6 +5,7 @@ param (
     [AllowNull()]
     [AllowEmptyString()]
     [String]$Filter = '*',
+    [bool]$Pull = $true,
     [bool]$Setup = $true,
     [bool]$InitializeSettings = $true,
     [bool]$ItemSync = $true,
@@ -39,33 +40,34 @@ begin {
 }
 
 process {
-    if (!$Show) {
-        $WriteProgress = @{
-            Activity = '.dotfiles Initialization'
-            Status   = 'Downloading the latest .dotfiles...'
-        }
-        Write-Progress @WriteProgress
-        if ( Get-Command -Name 'git' -ErrorAction SilentlyContinue ) {
-            $filePath = 'git'
-        }
-        else {
-            $filePath = '$PSScriptRoot\.MinGit\R00T64\git\git.exe'
-        }
-        $git = @{
-            FilePath         = $filePath
-            WorkingDirectory = $PSScriptRoot
-            NoNewWindow      = $true
-            Wait             = $true
-        }
+    $WriteProgress = @{
+        Activity = '.dotfiles Initialization'
+    }
 
-        $WriteProgress['Status'] = 'Configuring Environment...'
-        Write-Progress @WriteProgress
-        $dotFilesBin = ( Resolve-Path -Path "$PSScriptRoot\bin" ).Path
-        $newPath = "$dotFilesBin; " + ($env:Path -replace [Regex]::Escape("$dotFilesBin; "), '')
-        $env:Path = $newPath
-        [System.Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
-        Start-Process @git -ArgumentList 'config', '--local', 'user.name', $UserName
-        Start-Process @git -ArgumentList 'config', '--local', 'user.email', $UserEmail
+    $WriteProgress['Status'] = 'Downloading the latest .dotfiles...'
+    Write-Progress @WriteProgress
+    if ( Get-Command -Name 'git' -ErrorAction SilentlyContinue ) {
+        $filePath = 'git'
+    }
+    else {
+        $filePath = '$PSScriptRoot\.MinGit\R00T64\git\git.exe'
+    }
+    $git = @{
+        FilePath         = $filePath
+        WorkingDirectory = $PSScriptRoot
+        NoNewWindow      = $true
+        Wait             = $true
+    }
+
+    $WriteProgress['Status'] = 'Configuring Environment...'
+    Write-Progress @WriteProgress
+    $dotFilesBin = ( Resolve-Path -Path "$PSScriptRoot\bin" ).Path
+    $newPath = "$dotFilesBin; " + ($env:Path -replace [Regex]::Escape("$dotFilesBin; "), '')
+    $env:Path = $newPath
+    [System.Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
+    Start-Process @git -ArgumentList 'config', '--local', 'user.name', $UserName
+    Start-Process @git -ArgumentList 'config', '--local', 'user.email', $UserEmail
+    if ($Pull) {
         Start-Process @git -ArgumentList 'pull'
     }
     $WriteProgress['Status'] = 'Gathering Items to Set Up...'

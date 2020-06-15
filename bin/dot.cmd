@@ -32,7 +32,7 @@ if "%1"=="init" (
 )
 if "%1"=="show" (
     set "valid=true"
-    powershell -Command "& %~dp0..\init.ps1 -Filter '%2' -Setup $false -InitializeSettings $false -ItemSync $false -ItemExport $false"
+    powershell -Command "& %~dp0..\init.ps1 -Filter '%2' -Pull $false -Setup $false -InitializeSettings $false -ItemSync $false"
 )
 if "%1"=="sync" (
     set "valid=true"
