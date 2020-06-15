@@ -16,8 +16,13 @@ foreach ($path in $reposPath) {
     Push-Location -Path $path
     foreach ($repo in $repos) {
         Start-Process @git -ArgumentList 'clone', $repo
+        $localRepoPath = Join-Path `
+            -Path $path `
+            -ChildPath ( $repo.Split('/') | Select-Object -Last 1 ).Replace('.git', '')
+        Push-Location -Path $localRepoPath
         Start-Process @git -ArgumentList 'config', '--local', 'user.name', $UserName
         Start-Process @git -ArgumentList 'config', '--local', 'user.email', $UserEmail
+        Pop-Location
     }
     Pop-Location
 }

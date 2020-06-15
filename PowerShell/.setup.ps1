@@ -1,2 +1,3 @@
-Get-Item -Path $profile | Remove-Item -Force -WhatIf -ErrorAction SilentlyContinue
-( pwsh -Command 'Get-Item -Path $profile' ) | Remove-Item -Force -WhatIf -ErrorAction SilentlyContinue
+$profile | Remove-Item -Force -ErrorAction SilentlyContinue
+( pwsh -Command '$profile' ) | Remove-Item -Force -ErrorAction SilentlyContinue
+. $PSScriptRoot\profile.ps1

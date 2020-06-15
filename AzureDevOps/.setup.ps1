@@ -20,7 +20,10 @@ if (!( Get-InstalledModule -Name PSSiOps -ErrorAction SilentlyContinue )) {
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://sidevbin.blob.core.windows.net/files/PowerShell/Install-PSSiOps.ps1'))
 }
 
-$noInstall = (( Get-Command -Name 'cm' ) -and ( Get-Item -Path '\\127.0.0.1\ScmFeed' ))
+$noInstall = (
+    ( Get-Command -Name 'cm' -ErrorAction SilentlyContinue ) -and
+    ( Get-Item -Path '\\127.0.0.1\ScmFeed' -ErrorAction SilentlyContinue )
+)
 if (!$noInstall) {
     Start-CmToolsSetup
 }
