@@ -1,7 +1,7 @@
 @echo off
 goto :commands
 :help
-    echo usage: dot <command> [section]
+    echo usage: dot ^<command^> [section]
     echo:
     echo Command descriptions:
     echo:
@@ -25,7 +25,9 @@ goto :commands
 goto :eof
 
 :commands
+
 powershell -Command "& {Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force}"
+
 if "%1"=="init" (
     set "valid=true"
     powershell -Command "& %~dp0..\init.ps1 -Filter '%2'"
