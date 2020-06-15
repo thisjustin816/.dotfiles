@@ -45,11 +45,11 @@ Exports all configured items on the current machine to sync to other machines.
 
 Displays this information.
 
-## Settings
+## Settings Sync
 
 To add an application/folder to settings sync. Create a named folder in the root with a `.path.ps1` file containing just the path to the settings folder, and a `.setup.ps1` file with any app specific setup. All files and folders are replaced with symlinks to the versions in this repo.
 
-## Sync/Export
+## Item Sync/Export
 
 For each group of manual items that can't be synced using symlinks, create a folder here with at least these 3 files:
 
