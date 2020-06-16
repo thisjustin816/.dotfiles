@@ -2,52 +2,44 @@
 
 An original `.dotfiles` implementation for Windows. I didn't find much on Windows implementations of .dotfiles, so this is my version of it after reading some of the documentation for other operating systems.
 
-More information: [https://dotfiles.github.io/](https://dotfiles.github.io/)
+More information on what `.dotfiles` are: [https://dotfiles.github.io/](https://dotfiles.github.io/)
 
 ## Features
 
-- Settings sync for apps that supports text-based settings
-- A framework for syncing non settings file items
+- Install a preset set of apps via Chocolatey
+- Settings sync for apps that supports text-based settings (VS Code, Microsoft Terminal, etc.)
+- A framework for syncing non settings file items (VS Code Extensions, PowerShell modules, etc.)
 - A CLI tool for managing syncing (`dot`)
 - A bin folder that's added to the path
 
-## `dot` CLI
+## Getting Started
 
-### `init`
+### Fork and clone the `.dotfiles` repository
 
-Pulls the latest files, installs all apps and PowerShell modules, applies symbolic links to settings directories, and syncs all configured items.
+```console
+curl -u "[username]" "https://api.github.com/repos/thisjustin816/.dotfiles/forks" -d " "
 
-### `show`
+git clone https://github.com/[username]/.dotfiles.git`
 
-Shows the functional sections that the command can apply to.
+cd .dotfiles
 
-### `sync`
+git remote add upstream https://github.com/thisjustin816/.dotfiles.git
+```
 
-Pulls the latest files, installs all apps and PowerShell modules, and syncs all configured items.
+### Change any user specific settings
 
-### `update`
+- Check the parameters in the `init.ps1`, `.sync-*.ps1`, and `.setup.ps1` PowerShell scripts.
+- Modify the `.[item]` lists in each folder.
 
-Pulls the latest files to update synced settings.
+### Run the initialization script
 
-### `save`
+`powershell init.ps1`
 
-Commits and pushes all local changes to the .dotfiles origin repo.
-
-### `status`
-
-Gives the git status of the .dotfiles repo.
-
-### `export`
-
-Exports all configured items on the current machine to sync to other machines.
-
-### `help`
-
-Displays this information.
+---
 
 ## Settings Sync
 
-To add an application/folder to settings sync. Create a named folder in the root with a `.path.ps1` file containing just the path to the settings folder, and a `.setup.ps1` file with any app specific setup. All files and folders are replaced with symlinks to the versions in this repo.
+To add an application/folder to settings sync. Create a named folder in the root with a `.path.ps1` file containing just the path to the settings folder, and a `.setup.ps1` file with any app specific setup. Copy the settings files and folders that you want synced into this repo. After running `init`, all those files and folders are replaced with symlinks to the versions here.
 
 ## Item Sync/Export
 
@@ -56,3 +48,53 @@ For each group of manual items that can't be synced using symlinks, create a fol
 - `.export-[itemtype].ps1` - This should contain a method for exporting the items on the current machines and merging it with the list in this repo.
 - `.sync-[itemtype].ps1` - This should contain the method for installing/applying the list of items.
 - `.[itemtype]` - The list of items to sync.
+
+---
+
+## `dot` CLI Reference
+
+### Usage
+
+`dot <command> [section]`
+
+### Commands
+
+#### `init`
+
+Pulls the latest files, installs all apps and PowerShell modules, applies symbolic links to settings directories, and syncs all configured items.
+
+#### `show`
+
+Shows the functional sections that the command can apply to.
+
+#### `sync`
+
+Pulls the latest files, installs all apps and PowerShell modules, and syncs all configured items.
+
+#### `update`
+
+Pulls the latest files to update synced settings.
+
+#### `save`
+
+Commits and pushes all local changes to the .dotfiles origin repo.
+
+#### `status`
+
+Gives the git status of the .dotfiles repo.
+
+#### `export`
+
+Exports all configured items on the current machine to sync to other machines.
+
+#### `help`
+
+Displays this information.
+
+### Examples
+
+`dot update`  
+Pulls the latest from all folders.
+
+`dot save VSCode`  
+Commits and pushes the settings for VS Code.
