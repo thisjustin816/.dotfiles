@@ -12,7 +12,7 @@ $choco = @{
 }
 foreach ($app in $appsToInstall) {
     if ($currentApps -notcontains $app) {
-        Start-Process @choco -ArgumentList ('install', $app)
+        Start-Process @choco -ArgumentList ('install', $app, '-y')
     }
 }
-Start-Process @choco -ArgumentList ('upgrade', 'all')
+Start-Process @choco -ArgumentList ('upgrade', 'all', '-y')
