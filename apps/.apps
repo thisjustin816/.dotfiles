@@ -1,7 +1,4 @@
 ﻿beyondcompare
-DotNet3.5
-dotnetfx
-ffmpeg
 git
 git.install
 googlechrome
@@ -9,11 +6,5 @@ microsoft-windows-terminal
 nodejs-lts
 nuget.commandline
 powershell-core
-procexp
-python3
 screentogif
-vcredist140
-vcredist2015
 vscode
-wixtoolset
-zulu11
