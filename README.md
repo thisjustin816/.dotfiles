@@ -96,5 +96,5 @@ Displays this information.
 `dot update`  
 Pulls the latest from all folders.
 
-`dot save VSCode`  
-Commits and pushes the settings for VS Code.
+`dot sync VSCode`  
+Gets the latest settings and installs any missing extensions for VS Code.
