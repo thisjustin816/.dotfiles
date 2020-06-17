@@ -1,6 +1,6 @@
 param (
-    [String]$UserName = 'First Last',
-    [String]$UserEmail = 'name@domain.com'
+    [String]$UserName = 'Justin Beeson',
+    [String]$UserEmail = 'justinbeeson@gmail.com'
 )
 
 $repos = Get-Content -Path "$PSScriptRoot\.repos"
