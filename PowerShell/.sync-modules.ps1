@@ -1,3 +1,8 @@
+$progress = @{
+    Activity = 'Syncing PowerShell Modules'
+    Status = 'Fixing PackageManagement...'
+}
+Write-Progress @progress
 # Fix a bug in PowerShellCore that prevents NuGet from being installed
 Get-ChildItem `
     -Path $env:PSModulePath.Split(';') `
@@ -18,7 +23,12 @@ Get-ChildItem `
         }
     }
 
+$progress['Status'] = 'Installing NuGet...'
+Write-Progress @progress
 Install-PackageProvider -Name 'NuGet' -Force
+
+$progress['Status'] = 'Finding already installed modules...'
+Write-Progress @progress
 $modulesToInstall = @()
 $modulesToInstall += Get-Content -Path "$PSScriptRoot\.modules"
 $installedModules = @()
@@ -26,6 +36,9 @@ $installedModules += Get-InstalledModule |
     Where-Object -Property Repository -EQ PSGallery |
     Where-Object -Property Name -NotMatch 'Az.*' |
     Select-Object -ExpandProperty Name
+
+$progress['Status'] = 'Installing missing modules...'
+Write-Progress @progress
 foreach ($module in $modulesToInstall) {
     if ($installedModules -notcontains $module) {
         Install-Module `
@@ -38,8 +51,13 @@ foreach ($module in $modulesToInstall) {
             Select-Object -Property Name, Version, Description | Format-Table
     }
 }
+
+$progress['Status'] = 'Updating all installed modules...'
+Write-Progress @progress
 Get-InstalledModule |
     Where-Object -Property Name -NotMatch 'Az.*' |
     Update-Module -PassThru |
     Select-Object -Property Name, Version, Description |
     Format-Table
+
+Write-Progress @progress -Completed
