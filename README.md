@@ -28,6 +28,7 @@ git remote add upstream https://github.com/thisjustin816/.dotfiles.git
 
 ### Change any user specific settings
 
+- Review the settings files in each directory.
 - Check the parameters in the `init.ps1`, `.sync-*.ps1`, and `.setup.ps1` PowerShell scripts.
 - Modify the `.[item]` lists in each folder.
 
