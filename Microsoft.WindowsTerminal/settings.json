@@ -61,17 +61,6 @@
                 "fontFace": "Cascadia Mono"
             },
             {
-                "guid": "{F13CC141-C986-4D58-9A33-E86A7E1C4139}",
-                "name": "CM Tools Shell",
-                "commandline": "cm.exe -nocolor -noresize -y",
-                "hidden": false,
-                "useAcrylic": true,
-                "startingDirectory": "%SYSTEMDRIVE%\\repos\\pulse",
-                "icon": "C:\\Users\\jbeeson\\OneDrive - Nuvasive Inc\\Pictures\\NuVa Logos\\Teardrop_digital_PNG\\Digital_PNG\\nuva-drop-rgb-color.png",
-                "colorScheme": "Campbell NuVa",
-                "fontFace": "Cascadia Mono"
-            },
-            {
                 "guid": "{e8ca5231-c04d-4993-b701-edd3a115fb33}",
                 "name": "git-bash",
                 "commandline": "\"C:\\Program Files\\Git\\bin\\bash.exe\" --cd-to-home",
@@ -335,28 +324,6 @@
             "red" : "#BD0940",
             "white" : "#FFFFFD",
             "yellow" : "#E0DE48"
-        },
-        {
-            "name": "Campbell NuVa",
-            "foreground": "#D9D9D6",
-            "background": "#6D2077",
-            "cursorColor": "#FFFFFF",
-            "black": "#0C0C0C",
-            "red": "#C50F1F",
-            "green": "#13A10E",
-            "yellow": "#C19C00",
-            "blue": "#0037DA",
-            "purple": "#881798",
-            "cyan": "#3A96DD",
-            "white": "#CCCCCC",
-            "brightBlack": "#767676",
-            "brightRed": "#E74856",
-            "brightGreen": "#0095C8",
-            "brightYellow": "#F9F1A5",
-            "brightBlue": "#3B78FF",
-            "brightPurple": "#B4009E",
-            "brightCyan": "#61D6D6",
-            "brightWhite": "#F2F2F2"
         }
     ],
 

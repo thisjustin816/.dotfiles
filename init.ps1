@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param (
-    [String]$UserName = 'Justin Beeson',
-    [String]$UserEmail = 'justinbeeson@gmail.com',
+    [String]$UserName = 'First Last',
+    [String]$UserEmail = 'name@domain.com',
     [AllowNull()]
     [AllowEmptyString()]
     [String]$Filter = '*',
