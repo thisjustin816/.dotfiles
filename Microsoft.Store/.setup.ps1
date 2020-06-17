@@ -19,4 +19,6 @@ $appXPackages = @(
 )
 foreach ($app in $appxPackages) {
     Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage -ErrorAction SilentlyContinue
+    # The AppxPackage cmdlets leave the progress bar in the console
+    Write-Progress -Activity 'Clear Progress Bar' -Completed
 }
