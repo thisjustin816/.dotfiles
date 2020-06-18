@@ -1,2 +1,2 @@
-$profile.CurrentUserAllHosts | Split-Path -Parent
-pwsh -Command '$profile.CurrentUserAllHosts| Split-Path -Parent'
+$profile | Split-Path -Parent
+pwsh -Command '$profile | Split-Path -Parent'
