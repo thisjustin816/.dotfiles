@@ -120,6 +120,7 @@ process {
                 . $export.FullName
             }
         }
+        Pop-Location
     }
     Write-Progress @WriteProgress -Completed
 }
