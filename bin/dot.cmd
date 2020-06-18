@@ -16,6 +16,8 @@ goto :commands
     echo:
     echo   save        Commits and pushes all local changes to the .dotfiles origin repo.
     echo:
+    echo   discard     Discards all local changes.
+    echo:
     echo   status      Gives the git status of the .dotfiles repo.
     echo:
     echo   export      Exports all configured items on the current machine to sync to other machines.
@@ -51,6 +53,13 @@ if "%1"=="save" (
     git commit -a -m ".dotfiles saved by dot save"
     git pull
     git push
+    popd
+)
+if "%1"=="discard" (
+    set "valid=true"
+    pushd %~dp0..
+    git reset --hard HEAD
+    git clean -xfd
     popd
 )
 if "%1"=="status" (

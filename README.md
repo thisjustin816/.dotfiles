@@ -80,6 +80,10 @@ Pulls the latest files to update synced settings.
 
 Commits and pushes all local changes to the .dotfiles origin repo.
 
+#### `discard`
+
+Discards all local changes.
+
 #### `status`
 
 Gives the git status of the .dotfiles repo.
