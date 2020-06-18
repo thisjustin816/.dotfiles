@@ -33,7 +33,8 @@ begin {
                 New-Item `
                     -ItemType 'SymbolicLink' `
                     -Path "$originalLocation\$($syncedItem.Name)" `
-                    -Target "$($targetItem.FullName)\$($syncedItem.Name)"
+                    -Target "$($targetItem.FullName)\$($syncedItem.Name)" `
+                    -Force
             }
         }
     }
@@ -94,11 +95,11 @@ process {
             Write-Progress @WriteProgress
             . ".\.setup.ps1"
         }
-        if ($InitializeSettings -and ( Get-Item -Path ".\.path.ps1" -ErrorAction SilentlyContinue )) {
+        if ( $InitializeSettings -and ( Get-Item -Path ".\.path.ps1" -ErrorAction SilentlyContinue )) {
             $WriteProgress['CurrentOperation'] = 'Settings Initialization'
             Write-Progress @WriteProgress
             $linkPath = & ".\.path.ps1"
-            if ( Resolve-Path -Path $linkPath ) {
+            if ( Resolve-Path -Path $linkPath -ErrorAction SilentlyContinue ) {
                 Set-SymbolicLink -Path $linkPath -Target $folder.FullName
             }
         }
