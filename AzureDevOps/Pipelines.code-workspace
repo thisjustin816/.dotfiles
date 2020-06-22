@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\azrepos\\CmSettings"
+		},
+		{
+			"path": "..\\..\\..\\..\\azrepos\\CMTools"
+		},
+		{
+			"path": "..\\..\\..\\..\\azrepos\\AzurePipelines"
+		},
+		{
+			"path": "..\\..\\..\\..\\azrepos\\PipelineTasks"
+		}
+	],
+	"settings": {
+		"cSpell.words": [
+			"BATCHBUILD"
+		]
+	}
+}
