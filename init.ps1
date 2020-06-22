@@ -2,9 +2,10 @@
 param (
     [String]$UserName = 'First Last',
     [String]$UserEmail = 'name@domain.com',
+    [Parameter(Position = 0)]
     [AllowNull()]
     [AllowEmptyString()]
-    [String]$Filter = '*',
+    [String[]]$Filter = @('*'),
     [bool]$Pull = $true,
     [bool]$Setup = $true,
     [bool]$InitializeSettings = $true,
@@ -74,17 +75,19 @@ process {
     $WriteProgress['Status'] = 'Gathering Items to Set Up...'
     Write-Progress @WriteProgress
     if ($null -eq $Filter) {
-        $Filter = '*'
-    }
-    if ($Filter -ne '*') {
-        $Filter = "*$Filter*"
+        $Filter = @('*')
     }
     $dotFolders = @()
-    $dotFolders += Get-ChildItem -Path $PSScriptRoot -Filter:$Filter -Directory |
-        Where-Object -FilterScript {
-            $_.Name -notmatch '^\..*' -and
-            $_.Name -ne 'bin'
+    foreach ($pattern in $Filter) {
+        if ($pattern -ne '*') {
+            $pattern = "$pattern*"
         }
+        $dotFolders += Get-ChildItem -Path $PSScriptRoot -Filter $pattern -Directory |
+            Where-Object -FilterScript {
+                $_.Name -notmatch '^\..*' -and
+                $_.Name -ne 'bin'
+            }
+    }
     foreach ($folder in $dotFolders) {
         $folder
         $WriteProgress['Status'] = "Configuring $($folder.Name)..."
