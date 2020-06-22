@@ -2,6 +2,7 @@
 param (
     [String]$UserName = 'Justin Beeson',
     [String]$UserEmail = 'justinbeeson@gmail.com',
+    [Parameter(Position = 0)]
     [AllowNull()]
     [AllowEmptyString()]
     [String[]]$Filter = @('*'),
