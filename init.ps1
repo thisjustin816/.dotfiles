@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param (
-    [String]$UserName = 'First Last',
-    [String]$UserEmail = 'name@domain.com',
+    [String]$UserName = 'GitHub User',
+    [String]$UserEmail = 'email@example.com',
     [Parameter(Position = 0)]
     [AllowNull()]
     [AllowEmptyString()]
