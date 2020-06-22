@@ -103,3 +103,6 @@ Pulls the latest from all folders.
 
 `dot sync VSCode`  
 Gets the latest settings and installs any missing extensions for VS Code.
+
+`dot sync PowerShell, apps`
+Gets the latest settings and syncs PowerShell modules and apps.
