@@ -15,6 +15,9 @@
 		{
 			"name": "AzurePipelines",
 			"path": "..\\..\\..\\..\\azrepos\\AzurePipelines"
+		},
+		{
+			"path": "..\\..\\..\\..\\azrepos\\RepoSettings"
 		}
 	],
 	"settings": {
