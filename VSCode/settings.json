@@ -139,5 +139,8 @@
     ],
     "terminal.integrated.automationShell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "explorer.confirmDragAndDrop": false,
-    "powershell.pester.outputVerbosity": "Normal"
+    "powershell.pester.outputVerbosity": "Detailed",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1"
 }
