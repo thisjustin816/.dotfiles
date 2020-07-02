@@ -351,5 +351,6 @@
     "explorer.confirmDragAndDrop": false,
     "powershell.pester.outputVerbosity": "Detailed",
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-    "powershell.codeFormatting.whitespaceBetweenParameters": true
+    "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1"
 }
