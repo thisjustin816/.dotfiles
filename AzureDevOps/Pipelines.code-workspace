@@ -18,6 +18,9 @@
 		},
 		{
 			"path": "..\\..\\..\\..\\azrepos\\RepoSettings"
+		},
+		{
+			"path": "..\\..\\..\\..\\azrepos\\Pipelines"
 		}
 	],
 	"settings": {
