@@ -16,3 +16,5 @@ foreach ($app in $appsToInstall) {
     }
 }
 Start-Process @choco -ArgumentList ('upgrade', 'all', '-y')
+
+Update-SessionEnvironment
