@@ -43,7 +43,7 @@ catch {
     Build_RequestedForEmail = 'jbeeson@organization.email'
 }
 "@
-        xit
+        exit
     }
 }
 
