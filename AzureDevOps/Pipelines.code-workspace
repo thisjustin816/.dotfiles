@@ -1,26 +1,22 @@
 {
 	"folders": [
 		{
-			"name": "PipelineTasks",
-			"path": "..\\..\\..\\..\\azrepos\\PipelineTasks"
+			"path": "PipelineTasks"
 		},
 		{
-			"name": "CmSettings",
-			"path": "..\\..\\..\\..\\azrepos\\CmSettings"
+			"path": "CmSettings"
 		},
 		{
-			"name": "CMTools",
-			"path": "..\\..\\..\\..\\azrepos\\CMTools"
+			"path": "CMTools"
 		},
 		{
-			"name": "AzurePipelines",
-			"path": "..\\..\\..\\..\\azrepos\\AzurePipelines"
+			"path": "AzurePipelines"
 		},
 		{
-			"path": "..\\..\\..\\..\\azrepos\\RepoSettings"
+			"path": "RepoSettings"
 		},
 		{
-			"path": "..\\..\\..\\..\\azrepos\\Pipelines"
+			"path": "Pipelines"
 		}
 	],
 	"settings": {

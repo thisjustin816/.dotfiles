@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "PulseInstaller"
+		},
+		{
+			"path": "WindowsUpdatesBin"
+		},
+		{
+			"path": "StlBin"
+		}
+	]
+}
