@@ -7,16 +7,20 @@ More information on what `.dotfiles` are: [https://dotfiles.github.io/](https://
 ## Features
 
 - Install a preset set of apps via Chocolatey
-- Settings sync for apps that supports text-based settings (VS Code, Microsoft Terminal, etc.)
+- Settings sync for apps that supports text-based settings (VS Code, Microsoft Terminal, PowerShell profiles, etc.)
 - A framework for syncing non settings file items (VS Code Extensions, PowerShell modules, etc.)
 - A CLI tool for managing syncing (`dot`)
 - A bin folder that's added to the path
+
+## Prerequisites
+
+- [Git for Windows](https://git-scm.com/download/win)
 
 ## Getting Started
 
 ### Fork and clone the `.dotfiles` repository
 
-```console
+```batch
 curl -u "[username]" "https://api.github.com/repos/thisjustin816/.dotfiles/forks" -d " "
 
 git clone https://github.com/[username]/.dotfiles.git`

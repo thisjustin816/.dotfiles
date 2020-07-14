@@ -48,12 +48,7 @@ process {
 
     $WriteProgress['Status'] = 'Downloading the latest .dotfiles...'
     Write-Progress @WriteProgress
-    if ( Get-Command -Name 'git' -ErrorAction SilentlyContinue ) {
-        $filePath = 'git'
-    }
-    else {
-        $filePath = '$PSScriptRoot\.MinGit\R00T64\git\git.exe'
-    }
+    $filePath = 'git'
     $git = @{
         FilePath         = $filePath
         WorkingDirectory = $PSScriptRoot
