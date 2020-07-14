@@ -25,7 +25,7 @@ catch {
             'Build_RequestedForEmail'
         )
         foreach ($var in $envVarNames) {
-            $envVariables[$var] = ( Get-Item -Path "env:$var" ).Value
+            $envVariables[$var] = ( Get-Item -Path "env:$var" -ErrorAction Stop ).Value
         }
     }
     catch {
@@ -43,6 +43,7 @@ catch {
     Build_RequestedForEmail = 'jbeeson@organization.email'
 }
 "@
+    exit
     }
 }
 
