@@ -339,7 +339,7 @@
     "powershell.codeFormatting.autoCorrectAliases": true,
     "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
     "powershell.codeFormatting.useCorrectCasing": true,
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "window.zoomLevel": 0,
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
