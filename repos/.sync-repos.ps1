@@ -6,8 +6,9 @@ param (
 $repos = Get-Content -Path "$PSScriptRoot\.repos"
 $reposPath = @( & "$PSScriptRoot\.path.ps1" )
 New-Item -Path $reposPath -ItemType Directory -Force
+$filePath = 'git'
 $git = @{
-    FilePath = 'git'
+    FilePath = $filePath
     NoNewWindow = $true
     Wait = $true
 }
