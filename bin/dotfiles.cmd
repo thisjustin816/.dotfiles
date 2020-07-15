@@ -1,7 +1,7 @@
 @echo off
 goto :commands
 :help
-    echo usage: dot ^<command^> [section]
+    echo usage: dotfiles ^<command^> [section]
     echo:
     echo Command descriptions:
     echo:
@@ -50,7 +50,7 @@ if "%1"=="save" (
     set "valid=true"
     pushd %~dp0..
     git add .
-    git commit -a -m ".dotfiles saved by dot save"
+    git commit -a -m ".dotfiles saved by dotfiles save"
     git pull
     git push
     popd

@@ -9,7 +9,7 @@ More information on what `.dotfiles` are: [https://dotfiles.github.io/](https://
 - Install a preset set of apps via Chocolatey
 - Settings sync for apps that supports text-based settings (VS Code, Microsoft Terminal, PowerShell profiles, etc.)
 - A framework for syncing non settings file items (VS Code Extensions, PowerShell modules, etc.)
-- A CLI tool for managing syncing (`dot`)
+- A CLI tool for managing syncing (`dotfiles`)
 - A bin folder that's added to the path
 
 ## Prerequisites
@@ -56,11 +56,13 @@ For each group of manual items that can't be synced using symlinks, create a fol
 
 ---
 
-## `dot` CLI Reference
+## `dotfiles` CLI Reference
 
 ### Usage
 
-`dot <command> [section]`
+`dotfiles <command> [section]`
+
+`dfi` can also be used in place of `dotfiles`.
 
 ### Commands
 
@@ -102,11 +104,11 @@ Displays this information.
 
 ### Examples
 
-`dot update`  
+`dotfiles update`  
 Pulls the latest from all folders.
 
-`dot sync VSCode`  
+`dotfiles sync VSCode`  
 Gets the latest settings and installs any missing extensions for VS Code.
 
-`dot sync PowerShell, apps`
+`dotfiles sync PowerShell, apps`
 Gets the latest settings and syncs PowerShell modules and apps.
