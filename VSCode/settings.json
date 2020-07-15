@@ -201,6 +201,7 @@
         "unmount",
         "unpartitioned",
         "untracked",
+        "upack",
         "usbs",
         "usebackq",
         "vasive",

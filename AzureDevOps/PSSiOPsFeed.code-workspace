@@ -1,28 +1,25 @@
 {
 	"folders": [
 		{
-			"name": "PSAzDevOps",
 			"path": "PSAzDevOps"
 		},
 		{
-			"name": "PSCmTools",
 			"path": "PSCmTools"
 		},
 		{
-			"name": "PSSiSharedFunctions",
 			"path": "PSSiSharedFunctions"
 		},
 		{
-			"name": "PSSiOps",
 			"path": "PSSiOps"
 		},
 		{
-			"name": "PSPulse",
 			"path": "PSPulse"
 		},
 		{
-			"name": "PSSiDash",
 			"path": "PSSiDash"
+		},
+		{
+			"path": "Install-PSSiOps"
 		}
 	]
 }

@@ -1,13 +1,46 @@
 {
 	"folders": [
 		{
+			"name": "PulseSystemInstaller",
 			"path": "PulseInstaller"
 		},
 		{
+			"name": "Install-WindowsUpdates",
 			"path": "WindowsUpdatesBin"
 		},
 		{
+			"name": "Export-Stls",
 			"path": "StlBin"
+		},
+		{
+			"name": "Install-Fovia",
+			"path": "FoviaBin"
+		},
+		{
+			"name": "Install-RigidBodies",
+			"path": "RigidBodyBin"
+		},
+		{
+			"name": "Install-RSIP",
+			"path": "NavigationModule/Install-RSIP"
+		},
+		{
+			"name": "Install-MFormats",
+			"path": "MFormatsBin"
+		},
+		{
+			"name": "Configure-zSecurity",
+			"path": "pulseimaging/Pulse-Install-USB/imaging-scripts/wdac"
+		},
+		{
+			"name": "tablet-setup",
+			"path": "PulseRc"
 		}
-	]
+	],
+	"settings": {
+		"cSpell.words": [
+			"PSISTLs",
+			"STLs"
+		]
+	}
 }
