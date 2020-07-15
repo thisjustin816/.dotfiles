@@ -190,6 +190,7 @@
         "subnets",
         "substatuses",
         "swmfile",
+        "symlinks",
         "sysprep",
         "taskkill",
         "theming",
