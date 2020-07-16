@@ -17,4 +17,5 @@ foreach ($app in $appsToInstall) {
 }
 Start-Process @choco -ArgumentList ('upgrade', 'all', '-y')
 
-Update-SessionEnvironment
+Import-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction Ignore
+Update-SessionEnvironment -ErrorAction Ignore
