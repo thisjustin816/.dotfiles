@@ -3,7 +3,7 @@ $extensionsToInstall += Get-Content -Path "$PSScriptRoot\.extensions"
 $currentExtensions = @()
 $currentExtensions += Invoke-Command -ScriptBlock { code --list-extensions }
 $code = @{
-    FilePath = 'code'
+    FilePath = "$env:ProgramFiles\Microsoft VS Code\bin\code.cmd"
     NoNewWindow = $true
     Wait = $true
 }
