@@ -3,7 +3,6 @@ dotnetcore-sdk
 git
 git.install
 googlechrome
-microsoft-edge
 microsoft-teams
 microsoft-windows-terminal
 nodejs-lts
