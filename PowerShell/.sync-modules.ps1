@@ -23,6 +23,8 @@ Get-ChildItem `
         }
     }
 
+. $PSScriptRoot\profile.ps1
+
 $progress['Status'] = 'Installing NuGet...'
 Write-Progress @progress
 Install-PackageProvider -Name 'NuGet' -Force
