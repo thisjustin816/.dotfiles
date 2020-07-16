@@ -74,7 +74,9 @@
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "hidden": false,
                 "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
+                "source": "Windows.Terminal.Azure",
+                "useAcrylic": true,
+                "fontFace": "Cascadia Code PL"
             },
             {
                 "guid": "{F13CC141-C986-4D58-9A33-E86A7E1C4139}",
@@ -92,6 +94,15 @@
                 "commandline": "\"C:\\Program Files\\Git\\bin\\bash.exe\" --cd-to-home",
                 "hidden": false,
                 "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "colorScheme": "Raspberry",
+                "fontFace": "Cascadia Mono"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl",
+                "useAcrylic": true,
                 "colorScheme": "Raspberry",
                 "fontFace": "Cascadia Mono"
             }
