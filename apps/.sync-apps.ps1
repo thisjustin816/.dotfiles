@@ -2,7 +2,7 @@ $appsToInstall = @()
 $appsToInstall += Get-Content -Path "$PSScriptRoot\.apps"
 $currentApps = @()
 $currentApps += Invoke-Command -ScriptBlock { choco list -lo } |
-    Select-Object -Skip 2 |
+    Select-Object -Skip 1 |
     Select-Object -SkipLast 1 |
     ForEach-Object -Process { $_.Split(' ')[0] }
 $choco = @{
