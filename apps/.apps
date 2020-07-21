@@ -1,4 +1,5 @@
-﻿beyondcompare
+﻿7zip
+beyondcompare
 dotnetcore-sdk
 git
 git.install
@@ -11,4 +12,5 @@ powershell-core
 screentogif
 slack
 vscode
+wireshark
 zoom
