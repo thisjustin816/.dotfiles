@@ -62,9 +62,4 @@ Get-InstalledModule |
     Select-Object -Property Name, Version, Description |
     Format-Table
 
-$progress['Status'] = 'Running Windows Update...'
-Write-Progress @progress
-Add-WUServiceManager -MicrosoftUpdate -Confirm:$false
-Install-WindowsUpdate -MicrosoftUpdate -AcceptAll
-
 Write-Progress @progress -Completed
