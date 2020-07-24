@@ -14,7 +14,7 @@ $updateCheckPath = "$( Get-Item -Path $profile.CurrentUserAllHosts | Split-Path 
 
 function Start-DevVm {
     try {
-        Start-AzureRmVM -Name jbeeson-vm01 -ResourceGroupName jbeeson-vm01_group
+        Start-AzureRmVM -Name jbeeson-vm01 -ResourceGroupName jbeeson-vm01_group -ErrorAction Stop
     }
     catch {
         Connect-AzureRmAccount
