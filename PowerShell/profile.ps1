@@ -30,6 +30,7 @@ function Start-DevVm {
         Start-AzVm @azVm
     }
 }
+Set-Alias -Name vm -Value Start-DevVm
 
 function Stop-DevVm {
     [CmdletBinding()]
@@ -43,3 +44,4 @@ function Stop-DevVm {
     }
     Stop-AzVM @azVm
 }
+Set-Alias -Name vmx -Value Stop-DevVm
