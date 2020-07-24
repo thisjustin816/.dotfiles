@@ -13,11 +13,33 @@ $updateCheckPath = "$( Get-Item -Path $profile.CurrentUserAllHosts | Split-Path 
 <# Begin AzCredential #> $AzCredential = Get-PatPSCredential; $PSDefaultParameterValues = @{ "*-Module:Credential" = $AzCredential; "*-Package:Credential" = $AzCredential; "*-PackageSource:Credential" = $AzCredential; "*-PackageProvider:Credential" = $AzCredential; "*-PSRepository:Credential" = $AzCredential } <# End AzCredential #>
 
 function Start-DevVm {
+    [CmdletBinding()]
+    param(
+        $Name = 'jbeeson-vm01',
+        $ResourceGroupName = 'jbeeson-vm01_group'
+    )
+    $azVm = @{
+        Name = $Name
+        $ResourceGroupName = $ResourceGroupNam
+    }
     try {
-        Start-AzureRmVM -Name jbeeson-vm01 -ResourceGroupName jbeeson-vm01_group -ErrorAction Stop
+        Start-AzVm @azVm -ErrorAction Stop
     }
     catch {
-        Connect-AzureRmAccount
-        Start-AzureRmVM -Name jbeeson-vm01 -ResourceGroupName jbeeson-vm01_group
+        Connect-AzAccount
+        Start-AzVm @azVm
     }
+}
+
+function Stop-DevVm {
+    [CmdletBinding()]
+    param(
+        $Name = 'jbeeson-vm01',
+        $ResourceGroupName = 'jbeeson-vm01_group'
+    )
+    $azVm = @{
+        Name = $Name
+        $ResourceGroupName = $ResourceGroupNam
+    }
+    Stop-AzVM @azVm
 }
