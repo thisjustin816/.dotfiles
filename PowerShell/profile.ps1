@@ -10,7 +10,7 @@ if ( Get-Command Set-Theme -ErrorAction Ignore ) { Set-Theme Paradox }
 
 $updateCheckPath = "$( Get-Item -Path $profile.CurrentUserAllHosts | Split-Path -Parent )\LastPSSiOpsUpdateCheck.xml"; if (!( Get-Item -Path $updateCheckPath -ErrorAction SilentlyContinue ) -or (( Import-Clixml -Path $updateCheckPath ) -lt ( Get-Date ).AddDays(-1))) { Import-Module -Name PSSiSharedFunctions -MinimumVersion 2.0.13 -Force; Get-PSSiOpsUpdate -ErrorAction SilentlyContinue }
 
-<# Begin AzCredential #> $AzCredential = Get-PatPSCredential; $PSDefaultParameterValues = @{ "*-Module:Credential" = $AzCredential; "*-Package:Credential" = $AzCredential; "*-PackageSource:Credential" = $AzCredential; "*-PackageProvider:Credential" = $AzCredential; "*-PSRepository:Credential" = $AzCredential } <# End AzCredential #>
+<# Begin AzCredential #> $PSDefaultParameterValues = @{ "*-Module:Credential" = Get-PatPSCredential; "*-Package:Credential" = Get-PatPSCredential; "*-PackageSource:Credential" = Get-PatPSCredential; "*-PackageProvider:Credential" = Get-PatPSCredential; "*-PSRepository:Credential" = Get-PatPSCredential } <# End AzCredential #>
 
 function Start-DevVm {
     [CmdletBinding()]
