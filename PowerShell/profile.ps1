@@ -20,7 +20,7 @@ function Start-DevVm {
     )
     $azVm = @{
         Name = $Name
-        $ResourceGroupName = $ResourceGroupNam
+        ResourceGroupName = $ResourceGroupName
     }
     try {
         Start-AzVm @azVm -ErrorAction Stop
@@ -40,8 +40,15 @@ function Stop-DevVm {
     )
     $azVm = @{
         Name = $Name
-        $ResourceGroupName = $ResourceGroupNam
+        ResourceGroupName = $ResourceGroupName
+        Force = $true
     }
-    Stop-AzVM @azVm
+    try {
+        Stop-AzVm @azVm -ErrorAction Stop
+    }
+    catch {
+        Connect-AzAccount
+        Stop-AzVm @azVm
+    }
 }
 Set-Alias -Name vmx -Value Stop-DevVm
