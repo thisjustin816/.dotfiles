@@ -55,6 +55,7 @@
         "Nvidia",
         "OWASP",
         "Oauth",
+        "PSHOME",
         "Pgit",
         "Prefetch",
         "Reagentc",
@@ -359,5 +360,9 @@
     "explorer.confirmDragAndDrop": false,
     "powershell.pester.outputVerbosity": "Detailed",
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1"
+    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1",
+    "files.associations": {
+        "*.yml": "azure-pipelines"
+    },
+    "powershell.codeFormatting.whitespaceBetweenParameters": true
 }
