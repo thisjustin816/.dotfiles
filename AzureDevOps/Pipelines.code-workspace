@@ -5,6 +5,10 @@
 			"path": "PipelineTasks"
 		},
 		{
+			"name": "PipelineTemplates",
+			"path": "PipelineTemplates"
+		},
+		{
 			"name": "CMTools",
 			"path": "CMTools"
 		},
