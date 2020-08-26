@@ -31,7 +31,9 @@
 	],
 	"settings": {
 		"cSpell.words": [
-			"BATCHBUILD"
+			"BATCHBUILD",
+			"cmcomponent",
+			"sonarcloud"
 		]
 	}
 }
