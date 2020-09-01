@@ -25,6 +25,8 @@
 
     "showTerminalTitleInTitlebar": true,
 
+    "largePasteWarning": false,
+
     // If enabled, selections are automatically copied to your clipboard.
     "copyOnSelect": false,
 
