@@ -36,7 +36,6 @@ $modulesToInstall += Get-Content -Path "$PSScriptRoot\.modules"
 $installedModules = @()
 $installedModules += Get-InstalledModule |
     Where-Object -Property Repository -EQ PSGallery |
-    Where-Object -Property Name -NotMatch 'Az.*' |
     Select-Object -ExpandProperty Name
 
 $progress['Status'] = 'Installing missing modules...'
@@ -57,7 +56,6 @@ foreach ($module in $modulesToInstall) {
 $progress['Status'] = 'Updating all installed modules...'
 Write-Progress @progress
 Get-InstalledModule |
-    Where-Object -Property Name -NotMatch 'Az.*' |
     Update-Module -PassThru |
     Select-Object -Property Name, Version, Description |
     Format-Table
