@@ -35,6 +35,10 @@
 		{
 			"name": "tablet-setup",
 			"path": "PulseRc"
+		},
+		{
+			"name": "Install-HOstspot",
+			"path": "ConnectifyBin"
 		}
 	],
 	"settings": {
