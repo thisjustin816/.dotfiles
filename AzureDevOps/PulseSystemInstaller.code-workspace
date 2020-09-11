@@ -37,7 +37,7 @@
 			"path": "PulseRc"
 		},
 		{
-			"name": "Install-HOstspot",
+			"name": "Install-Hotspot",
 			"path": "ConnectifyBin"
 		}
 	],
