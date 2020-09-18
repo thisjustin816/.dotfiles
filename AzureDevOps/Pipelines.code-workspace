@@ -17,14 +17,6 @@
 			"path": "CmSettings"
 		},
 		{
-			"name": "AzurePipelines",
-			"path": "AzurePipelines"
-		},
-		{
-			"name": "RepoSettings",
-			"path": "RepoSettings"
-		},
-		{
 			"name": "Pipelines",
 			"path": "Pipelines"
 		}
