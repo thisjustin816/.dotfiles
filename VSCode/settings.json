@@ -28,6 +28,7 @@
         "Eval",
         "GIFs",
         "Greyscale",
+        "Guids",
         "HKEY",
         "HKLM",
         "Hashtable",
@@ -145,6 +146,7 @@
         "ltsb",
         "mainboard",
         "mkdir",
+        "msedge",
         "msiexec",
         "nass",
         "netmask",
@@ -191,6 +193,7 @@
         "semver",
         "setlocal",
         "setvariable",
+        "signifiers",
         "sqlexpress",
         "ssid",
         "stim",
@@ -373,5 +376,6 @@
     "debug.console.fontSize": 12,
     "markdown.preview.fontSize": 12,
     "terminal.integrated.fontSize": 12,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "powershell.pester.useLegacyCodeLens": false
 }
