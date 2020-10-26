@@ -39,6 +39,10 @@
 		{
 			"name": "Install-Hotspot",
 			"path": "ConnectifyBin"
+		},
+		{
+			"name": "Install-NaviLinkCalibrationApp",
+			"path": "NaviLinkCalibrationApp/Install-NaviLinkCalibrationApp"
 		}
 	],
 	"settings": {
