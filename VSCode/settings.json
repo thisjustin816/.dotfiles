@@ -377,5 +377,6 @@
     "markdown.preview.fontSize": 12,
     "terminal.integrated.fontSize": 12,
     "explorer.confirmDelete": false,
-    "powershell.pester.useLegacyCodeLens": false
+    "powershell.pester.useLegacyCodeLens": false,
+    "team.showFarewellMessage": false
 }
