@@ -2,15 +2,18 @@ aaron-bond.better-comments
 chrisdias.vscode-opennewinstance
 christian-kohler.path-intellisense
 Compilenix.vscode-zonefile
+damienaicheh.azure-devops-snippets
 DavidAnson.vscode-markdownlint
 DotJoshJohnson.xml
 eamodio.gitlens
+humao.rest-client
 ionutvmi.reg
 johnpapa.vscode-peacock
 karigari.chat
 ms-azure-devops.azure-pipelines
 ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
+ms-vscode-remote.remote-wsl
 ms-vscode.azure-account
 ms-vscode.azurecli
 ms-vscode.powershell
@@ -22,6 +25,7 @@ shuworks.vscode-table-formatter
 slevesque.vscode-3dviewer
 streetsidesoftware.code-spell-checker
 tomoki1207.pdf
+tomoyukim.vscode-mermaid-editor
 VisualStudioExptTeam.vscodeintellicode
 vscode-icons-team.vscode-icons
 yzhang.markdown-all-in-one
