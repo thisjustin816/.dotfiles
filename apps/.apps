@@ -7,13 +7,9 @@ chocolatey-visualstudio.extension
 chocolatey-windowsupdate.extension
 crystaldiskinfo
 crystaldiskmark
-dotnet
-DotNet4.5.2
-DotNet4.6.1
-dotnetcore-sdk
-dotnetfx
-dotnet-runtime
 dotnet-sdk
+dotnetcore-sdk
+dotnetfx-sdk
 git
 GoogleChrome
 microsoft-teams
