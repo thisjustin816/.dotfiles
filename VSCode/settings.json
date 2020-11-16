@@ -284,7 +284,6 @@
         "{docsmsft.docs-markdown}/markdownlint-custom-rules/rules.js"
     ],
     "workbench.tree.indent": 16,
-    "liveshare.featureSet": "insiders",
     "markdownlint.config": {
         "MD025": {
             "front_matter_title": ""
@@ -378,5 +377,10 @@
     "terminal.integrated.fontSize": 12,
     "explorer.confirmDelete": false,
     "powershell.pester.useLegacyCodeLens": false,
-    "team.showFarewellMessage": false
+    "team.showFarewellMessage": false,
+    "liveshare.allowGuestDebugControl": true,
+    "liveshare.allowGuestTaskControl": true,
+    "liveshare.authenticationProvider": "Microsoft",
+    "liveshare.focusBehavior": "prompt",
+    "liveshare.languages.allowGuestCommandControl": true
 }
