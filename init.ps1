@@ -113,7 +113,7 @@ process {
         if ($ItemExport -and ( Get-Item -Path ".\.export-*.ps1" -ErrorAction SilentlyContinue )) {
             $exports = & Get-Item -Path ".\.export-*.ps1"
             foreach ($export in $exports) {
-                $itemName = $sync.BaseName.Split('-')[1]
+                $itemName = $export.BaseName.Split('-')[1]
                 $WriteProgress['CurrentOperation'] = "$(( Get-Culture ).TextInfo.ToTitleCase($itemName)) Export"
                 Write-Progress @WriteProgress
                 . $export.FullName
