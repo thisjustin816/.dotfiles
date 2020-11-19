@@ -382,5 +382,6 @@
     "liveshare.allowGuestTaskControl": true,
     "liveshare.authenticationProvider": "Microsoft",
     "liveshare.focusBehavior": "prompt",
-    "liveshare.languages.allowGuestCommandControl": true
+    "liveshare.languages.allowGuestCommandControl": true,
+    "liveshare.showInStatusBar": "whileCollaborating"
 }
