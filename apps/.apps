@@ -1,7 +1,7 @@
-﻿git
-git.install
+﻿dotnet-sdk
+git
 github-desktop
-googlechrome
+GoogleChrome
 microsoft-windows-terminal
 nodejs-lts
 nuget.commandline

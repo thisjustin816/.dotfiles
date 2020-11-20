@@ -6,4 +6,4 @@ if (Test-Path($ChocolateyProfile)) {
 
 Import-Module posh-git -ErrorAction Ignore
 Import-Module oh-my-posh -ErrorAction Ignore
-if ( Get-Module posh-git, oh-my-posh -ErrorAction Ignore ) { Set-Theme Paradox }
+if ( Get-Command Set-Theme -ErrorAction Ignore ) { Set-Theme Paradox }
