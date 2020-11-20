@@ -27,7 +27,7 @@ Get-ChildItem `
 
 $progress['Status'] = 'Installing NuGet...'
 Write-Progress @progress
-Install-PackageProvider -Name 'NuGet' -Force
+Install-PackageProvider -Name 'NuGet' -Force | Select-Object -Property Name, Version
 
 $progress['Status'] = 'Finding already installed modules...'
 Write-Progress @progress
