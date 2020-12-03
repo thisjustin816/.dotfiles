@@ -43,6 +43,10 @@
 		{
 			"name": "Install-NaviLinkCalibrationApp",
 			"path": "NaviLinkCalibrationApp/Install-NaviLinkCalibrationApp"
+		},
+		{
+			"name": "Install-SiDashboard",
+			"path": "SIDashboard"
 		}
 	],
 	"settings": {
