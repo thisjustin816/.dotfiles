@@ -193,6 +193,7 @@
         "semver",
         "setlocal",
         "setvariable",
+        "setx",
         "signifiers",
         "sqlexpress",
         "ssid",
