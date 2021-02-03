@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "PulseImaging"
+		},
+		{
+			"path": "PulseBaseImage"
+		},
+		{
+			"path": "PulseImagingBin"
+		}
+	],
+	"settings": {}
+}
