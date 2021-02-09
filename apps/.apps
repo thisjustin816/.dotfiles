@@ -5,8 +5,6 @@ chocolatey-core.extension
 chocolatey-dotnetfx.extension
 chocolatey-visualstudio.extension
 chocolatey-windowsupdate.extension
-crystaldiskinfo
-crystaldiskmark
 dotnet-sdk
 dotnetcore-sdk
 dotnetfx
