@@ -12,6 +12,7 @@
         "Beeson",
         "Bendini",
         "Bitstransfer",
+        "Bootstrapper",
         "CICD",
         "CVSS",
         "Carm",
@@ -361,7 +362,7 @@
     "powershell.codeFormatting.autoCorrectAliases": true,
     "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
     "powershell.codeFormatting.useCorrectCasing": true,
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "material-icon-theme",
     "window.zoomLevel": 0,
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
@@ -395,8 +396,10 @@
         "vs-kubernetes.helm-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
         "vs-kubernetes.minikube-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe",
         "vs-kubernetes.kubectl-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\kubectl\\kubectl.exe",
-        "vs-kubernetes.draft-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\draft\\windows-amd64\\draft.exe"
+        "vs-kubernetes.draft-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\draft\\windows-amd64\\draft.exe",
+        "vscode-kubernetes.minikube-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
     },
     "workbench.editor.decorations.badges": true,
-    "workbench.editor.wrapTabs": true
+    "workbench.editor.wrapTabs": true,
+    "workbench.productIconTheme": "material-product-icons"
 }

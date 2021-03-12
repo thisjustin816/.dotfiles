@@ -47,6 +47,10 @@
 		{
 			"name": "Install-SiDashboard",
 			"path": "SIDashboard"
+		},
+		{
+			"name": "DemoDataBin",
+			"path": "DemoDataBin"
 		}
 	],
 	"settings": {
