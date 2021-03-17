@@ -401,5 +401,6 @@
     },
     "workbench.editor.decorations.badges": true,
     "workbench.editor.wrapTabs": true,
-    "workbench.productIconTheme": "material-product-icons"
+    "workbench.productIconTheme": "material-product-icons",
+    "glassit.alpha": 205
 }
