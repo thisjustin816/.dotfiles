@@ -7,6 +7,9 @@
 			"path": "PSCmTools"
 		},
 		{
+			"path": "PSUtils"
+		},
+		{
 			"path": "PSSiSharedFunctions"
 		},
 		{
@@ -22,7 +25,16 @@
 			"path": "Install-PSSiOps"
 		},
 		{
-			"path": "PSUtils"
+			"path": "PSPulseInstall"
+		},
+		{
+			"path": "PSPulseConfig"
+		},
+		{
+			"path": "PSPulseFirewallConfig"
+		},
+		{
+			"path": "PSPulseDev"
 		}
 	]
 }
