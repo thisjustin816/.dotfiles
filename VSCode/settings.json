@@ -58,7 +58,6 @@
         "{docsmsft.docs-markdown}/markdownlint-custom-rules/rules.js"
     ],
     "workbench.tree.indent": 16,
-    "liveshare.featureSet": "insiders",
     "markdownlint.config": {
         "MD025": {
             "front_matter_title": ""
@@ -141,6 +140,21 @@
     "explorer.confirmDragAndDrop": false,
     "powershell.pester.outputVerbosity": "Detailed",
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1",
     "powershell.codeFormatting.whitespaceBetweenParameters": true,
-    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1"
+    "editor.fontSize": 12,
+    "debug.console.fontSize": 12,
+    "markdown.preview.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "explorer.confirmDelete": false,
+    "powershell.pester.useLegacyCodeLens": false,
+    "team.showFarewellMessage": false,
+    "liveshare.allowGuestDebugControl": true,
+    "liveshare.allowGuestTaskControl": true,
+    "liveshare.authenticationProvider": "Microsoft",
+    "liveshare.focusBehavior": "prompt",
+    "liveshare.languages.allowGuestCommandControl": true,
+    "liveshare.showInStatusBar": "whileCollaborating",
+    "workbench.editor.decorations.badges": true,
+    "workbench.editor.wrapTabs": true
 }

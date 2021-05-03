@@ -5,8 +5,18 @@
         "beyondcompare",
         "commandline",
         "dotfiles",
+        "dotnetfx",
+        "ffmpeg",
         "googlechrome",
         "itemtype",
-        "screentogif"
+        "mdfi",
+        "mdot",
+        "mdotfiles",
+        "oken",
+        "procexp",
+        "screentogif",
+        "vcredist",
+        "windirstat",
+        "wixtoolset"
     ]
 }

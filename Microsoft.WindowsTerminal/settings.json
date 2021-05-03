@@ -33,7 +33,9 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "fontFace": "Cascadia Code PL"
+            "useAcrylic": true,
+            "fontFace": "Cascadia Code PL",
+            "fontSize": 10
         },
         "list":
         [

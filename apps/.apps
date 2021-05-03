@@ -1,10 +1,14 @@
-﻿dotnet-sdk
+﻿7zip
+adobereader
+azure-cli
+dotnet-sdk
+gh
 git
-github-desktop
 GoogleChrome
 microsoft-windows-terminal
 nodejs-lts
 nuget.commandline
+openjdk
 powershell-core
 screentogif
 vscode

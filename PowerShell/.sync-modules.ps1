@@ -24,6 +24,7 @@ Get-ChildItem `
     }
 
 . $PSScriptRoot\profile.ps1
+. $profile.CurrentUserCurrentHost
 
 $progress['Status'] = 'Installing NuGet...'
 Write-Progress @progress
