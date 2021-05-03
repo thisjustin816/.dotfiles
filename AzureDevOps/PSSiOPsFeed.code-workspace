@@ -1,40 +1,52 @@
 {
 	"folders": [
 		{
+			"name": "PSAzDevOps",
 			"path": "PSAzDevOps"
 		},
 		{
+			"name": "PSCmTools",
 			"path": "PSCmTools"
 		},
 		{
+			"name": "PSUtils",
 			"path": "PSUtils"
 		},
 		{
+			"name": "PSSiSharedFunctions",
 			"path": "PSSiSharedFunctions"
 		},
 		{
+			"name": "PSSiOps",
 			"path": "PSSiOps"
 		},
 		{
-			"path": "PSPulse"
-		},
-		{
+			"name": "PSSiDash",
 			"path": "PSSiDash"
 		},
 		{
+			"name": "Install-PSSiOps",
 			"path": "Install-PSSiOps"
 		},
 		{
-			"path": "PSPulseInstall"
-		},
-		{
+			"name": "PSPulseConfig",
 			"path": "PSPulseConfig"
 		},
 		{
+			"name": "PSPulseDev",
+			"path": "PSPulseDev"
+		},
+		{
+			"name": "PSPulseFirewallConfig",
 			"path": "PSPulseFirewallConfig"
 		},
 		{
-			"path": "PSPulseDev"
+			"name": "PSPulseInstall",
+			"path": "PSPulseInstall"
+		},
+		{
+			"name": "PSPulse",
+			"path": "PSPulse"
 		}
 	]
 }

@@ -103,6 +103,7 @@
         "bitlocker",
         "bootable",
         "bootup",
+        "buildable",
         "checkin",
         "chipset",
         "choco",
