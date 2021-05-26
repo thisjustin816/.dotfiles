@@ -17,6 +17,7 @@
         "screentogif",
         "vcredist",
         "windirstat",
+        "winget",
         "wixtoolset"
     ]
 }
