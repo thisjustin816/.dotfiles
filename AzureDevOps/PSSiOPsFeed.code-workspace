@@ -37,16 +37,20 @@
 			"path": "PSPulseDev"
 		},
 		{
-			"name": "PSPulseFirewallConfig",
-			"path": "PSPulseFirewallConfig"
-		},
-		{
 			"name": "PSPulseInstall",
 			"path": "PSPulseInstall"
 		},
 		{
+			"name": "PSPulseFirewallConfig",
+			"path": "PSPulseFirewallConfig"
+		},
+		{
 			"name": "PSPulse",
 			"path": "PSPulse"
+		},
+		{
+			"name": "PSPulseSecurity",
+			"path": "PSPulseSecurity"
 		}
 	]
 }

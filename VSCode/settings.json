@@ -2,7 +2,6 @@
     "git.autofetch": true,
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
-    "team.showWelcomeMessage": false,
     "cSpell.userWords": [
         "ACCESTOKEN",
         "APPDATA",
@@ -110,6 +109,7 @@
         "chromedriver",
         "cleanmgr",
         "closewindow",
+        "cmatch",
         "codecoverage",
         "computername",
         "copyinstaller",
@@ -145,9 +145,11 @@
         "iexplore",
         "imagefile",
         "imagex",
+        "imatch",
         "inet",
         "ipaddress",
         "ipconfig",
+        "ireplace",
         "isnot",
         "jbeeson",
         "localgroup",
@@ -277,22 +279,15 @@
         "yaml",
         "yml"
     ],
-    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-    "gitlens.advanced.messages": {
-        "suppressShowKeyBindingsNotice": true
-    },
     "files.autoSave": "afterDelay",
     "workbench.activityBar.visible": true,
     "editor.minimap.enabled": false,
-    "window.menuBarVisibility": "default",
+    "window.menuBarVisibility": "visible",
     "editor.renderWhitespace": "all",
     "breadcrumbs.enabled": true,
     "editor.renderControlCharacters": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "markdownlint.customRules": [
-        "{docsmsft.docs-markdown}/markdownlint-custom-rules/rules.js"
-    ],
     "workbench.tree.indent": 16,
     "markdownlint.config": {
         "MD025": {
@@ -369,9 +364,7 @@
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
     "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace",
-    "powershell.powerShellAdditionalExePaths": [
-
-    ],
+    "powershell.powerShellAdditionalExePaths": [],
     "terminal.integrated.automationShell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "explorer.confirmDragAndDrop": false,
     "powershell.pester.outputVerbosity": "Detailed",
@@ -387,10 +380,8 @@
     "terminal.integrated.fontSize": 12,
     "explorer.confirmDelete": false,
     "powershell.pester.useLegacyCodeLens": false,
-    "team.showFarewellMessage": false,
     "liveshare.allowGuestDebugControl": true,
     "liveshare.allowGuestTaskControl": true,
-    "liveshare.authenticationProvider": "Microsoft",
     "liveshare.focusBehavior": "prompt",
     "liveshare.languages.allowGuestCommandControl": true,
     "liveshare.showInStatusBar": "whileCollaborating",
@@ -399,10 +390,21 @@
         "vs-kubernetes.minikube-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe",
         "vs-kubernetes.kubectl-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\kubectl\\kubectl.exe",
         "vs-kubernetes.draft-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\draft\\windows-amd64\\draft.exe",
-        "vscode-kubernetes.minikube-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe"
+        "vscode-kubernetes.minikube-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\minikube\\windows-amd64\\minikube.exe",
+        "vscode-kubernetes.helm-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\helm\\windows-amd64\\helm.exe",
+        "vscode-kubernetes.kubectl-path.windows": "C:\\Users\\jbeeson\\.vs-kubernetes\\tools\\kubectl\\kubectl.exe"
     },
     "workbench.editor.decorations.badges": true,
     "workbench.editor.wrapTabs": true,
     "workbench.productIconTheme": "material-product-icons",
-    "glassit.alpha": 255
+    "glassit.alpha": 255,
+    "redhat.telemetry.enabled": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "editor.semanticHighlighting.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "[powershell]": {
+        "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?"
+    }
 }

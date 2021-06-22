@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "PulseImagingBin"
+		},
+		{
+			"path": "PSPulseSecurity"
 		}
 	],
 	"settings": {}
