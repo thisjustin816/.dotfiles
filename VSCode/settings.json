@@ -406,5 +406,16 @@
         "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
         "editor.semanticHighlighting.enabled": true,
         "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?"
-    }
+    },
+    "mssql.connections": [
+        {
+            "server": "{{put-server-name-here}}",
+            "database": "{{put-database-name-here}}",
+            "user": "{{put-username-here}}",
+            "password": "{{put-password-here}}"
+        }
+    ],
+    "terminal.integrated.tabs.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.autocomplete.enable": true
 }

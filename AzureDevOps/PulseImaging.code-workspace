@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "PSPulseSecurity"
+		},
+		{
+			"path": "InitializeDisplays"
 		}
 	],
 	"settings": {}
