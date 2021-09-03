@@ -95,7 +95,7 @@
                 "hidden": false,
                 "icon": "C:\\Users\\jbeeson\\OneDrive - Nuvasive Inc\\Pictures\\NuVa Logos\\Teardrop_digital_PNG\\Digital_PNG\\nuva-drop-rgb-color.png",
                 "name": "CM Tools Shell",
-                "startingDirectory": "%SYSTEMDRIVE%\\repos\\pulse"
+                "startingDirectory": "%SYSTEMDRIVE%\\pulse"
             },
             {
                 "colorScheme": "Raspberry",

@@ -128,6 +128,7 @@
         "errorlevel",
         "eshell",
         "evals",
+        "eventcreate",
         "executables",
         "filepath",
         "filestream",
@@ -218,6 +219,7 @@
         "swmfile",
         "symlinks",
         "sysprep",
+        "takeown",
         "taskkill",
         "theming",
         "unattend",
@@ -417,5 +419,11 @@
     ],
     "terminal.integrated.tabs.enabled": false,
     "editor.inlineSuggest.enabled": true,
-    "github.copilot.autocomplete.enable": true
+    "github.copilot.autocomplete.enable": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    }
 }
