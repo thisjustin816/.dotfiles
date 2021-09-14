@@ -20,7 +20,7 @@ Start-Process @choco -ArgumentList ('upgrade', 'all', '-y')
 Import-Module -Name "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1" -ErrorAction Ignore
 Update-SessionEnvironment -ErrorAction Ignore
 
-$winget = Get-Command -Name winget -ErrorAction SilentlyContinue
-if ($winget) {
-    Start-Process -FilePath $winget.Source -ArgumentList ('upgrade', '--all') -NoNewWindow -Wait
-}
+#$winget = Get-Command -Name winget -ErrorAction SilentlyContinue
+#if ($winget) {
+#    Start-Process -FilePath $winget.Source -ArgumentList ('upgrade', '--all') -NoNewWindow -Wait
+#}
