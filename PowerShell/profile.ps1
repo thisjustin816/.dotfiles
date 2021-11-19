@@ -5,8 +5,8 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 Import-Module posh-git -ErrorAction Ignore
-Import-Module oh-my-posh -ErrorAction Ignore
-if ( Get-Command Set-Theme -ErrorAction Ignore ) { Set-Theme Paradox }
+# Import-Module oh-my-posh -ErrorAction Ignore
+# if ( Get-Command Set-Theme -ErrorAction Ignore ) { Set-Theme Paradox }
 
 function Start-DevVm {
     [CmdletBinding()]
