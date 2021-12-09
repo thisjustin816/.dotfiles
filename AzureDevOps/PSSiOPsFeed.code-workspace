@@ -9,12 +9,12 @@
 			"path": "PSCmTools"
 		},
 		{
-			"name": "PSUtils",
-			"path": "PSUtils"
-		},
-		{
 			"name": "PSSiSharedFunctions",
 			"path": "PSSiSharedFunctions"
+		},
+		{
+			"name": "PSUtils",
+			"path": "PSUtils"
 		},
 		{
 			"name": "PSSiOps",

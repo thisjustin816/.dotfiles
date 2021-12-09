@@ -358,7 +358,7 @@
     "git.autoStash": true,
     "git.allowForcePush": true,
     "git.fetchOnPull": true,
-    "powershell.powerShellDefaultVersion": "PowerShell Core 6 (x64)",
+    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
     "workbench.enableExperiments": false,
     "powershell.codeFormatting.autoCorrectAliases": true,
     "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
@@ -367,7 +367,7 @@
     "window.zoomLevel": 0,
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
-    "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'CaskaydiaCove NF', Consolas, 'Courier New', monospace",
     "terminal.integrated.automationShell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "powershell.powerShellAdditionalExePaths": [
         { 
@@ -424,7 +424,6 @@
             "password": ""
         }
     ],
-    "terminal.integrated.tabs.enabled": false,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.autocomplete.enable": true,
     "github.copilot.enable": {

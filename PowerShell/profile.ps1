@@ -4,10 +4,12 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
+# PowerShell terminal customization
 Import-Module posh-git -ErrorAction Ignore
-# Import-Module oh-my-posh -ErrorAction Ignore
-# if ( Get-Command Set-Theme -ErrorAction Ignore ) { Set-Theme Paradox }
+Import-Module oh-my-posh -MinimumVersion 3.0.0 -ErrorAction Ignore
+if ( Get-Command Set-PoshPrompt -ErrorAction Ignore ) { Set-PoshPrompt -Theme Paradox }
 
+# Azure VM helper functions
 function Start-DevVm {
     [CmdletBinding()]
     param(

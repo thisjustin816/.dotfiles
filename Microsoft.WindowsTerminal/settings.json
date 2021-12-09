@@ -1,22 +1,14 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "alwaysShowTabs": false,
-    "confirmCloseAllTabs": false,
-    "copyFormatting": "all",
-    "copyOnSelect": false,
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-    // Add custom keybindings to this array.
-    // To unbind a key combination from your defaults.json, set the command to "unbound".
-    // To learn more about keybindings, visit https://aka.ms/terminal-keybindings
-    "keybindings": 
+    "actions": 
     [
         {
-            "command": "commandPalette",
-            "keys": "Ctrl+Shift+P"
+            "command": 
+            {
+                "action": "commandPalette"
+            },
+            "keys": "ctrl+shift+p"
         },
-        // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
-        // To learn more about selection, visit https://aka.ms/terminal-selection
         {
             "command": 
             {
@@ -29,15 +21,10 @@
             "command": "paste",
             "keys": "ctrl+v"
         },
-        // Press Ctrl+Shift+F to open the search box
         {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
-        // Press Alt+Shift+D to open a new pane.
-        // - "split": "auto" makes this pane open in the direction that provides the most surface area.
-        // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
-        // To learn more about panes, visit https://aka.ms/terminal-panes
         {
             "command": 
             {
@@ -48,13 +35,21 @@
             "keys": "alt+shift+d"
         }
     ],
+    "alwaysShowTabs": false,
+    "confirmCloseAllTabs": false,
+    "copyFormatting": "all",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "largePasteWarning": false,
     "profiles": 
     {
         "defaults": 
         {
-            "fontFace": "Cascadia Code PL",
-            "fontSize": 10,
+            "font": 
+            {
+                "face": "CaskaydiaCove NF",
+                "size": 10
+            },
             "useAcrylic": true
         },
         "list": 
@@ -69,13 +64,20 @@
             {
                 "colorScheme": "Vintage",
                 "commandline": "cmd.exe",
-                "fontFace": "Cascadia Mono",
+                "font": 
+                {
+                    "face": "Cascadia Mono"
+                },
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
             },
             {
                 "colorScheme": "Campbell Powershell Core",
+                "font": 
+                {
+                    "face": "CaskaydiaCove NF"
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell Core",
@@ -90,7 +92,10 @@
             {
                 "colorScheme": "Campbell NuVa",
                 "commandline": "cm.exe -nocolor -noresize -y",
-                "fontFace": "Cascadia Mono",
+                "font": 
+                {
+                    "face": "Cascadia Mono"
+                },
                 "guid": "{f13cc141-c986-4d58-9a33-e86a7e1c4139}",
                 "hidden": false,
                 "icon": "C:\\Users\\jbeeson\\OneDrive - Nuvasive Inc\\Pictures\\NuVa Logos\\Teardrop_digital_PNG\\Digital_PNG\\nuva-drop-rgb-color.png",
@@ -100,7 +105,10 @@
             {
                 "colorScheme": "Raspberry",
                 "commandline": "\"C:\\Program Files\\Git\\bin\\bash.exe\" --cd-to-home",
-                "fontFace": "Cascadia Mono",
+                "font": 
+                {
+                    "face": "Cascadia Mono"
+                },
                 "guid": "{e8ca5231-c04d-4993-b701-edd3a115fb33}",
                 "hidden": false,
                 "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
@@ -109,7 +117,10 @@
             {
                 "colorScheme": "Vintage",
                 "commandline": "C:\\Windows\\system32\\cmd.exe /k \"C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Deployment Tools\\DandISetEnv.bat\" ",
-                "fontFace": "Cascadia Mono",
+                "font": 
+                {
+                    "face": "Cascadia Mono"
+                },
                 "guid": "{b2bb4fe8-5e2f-41c6-94bc-a064a28bf119}",
                 "hidden": false,
                 "name": "Deployment and Imaging"
