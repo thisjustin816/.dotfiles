@@ -1,14 +1,8 @@
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": 
     [
-        {
-            "command": 
-            {
-                "action": "commandPalette"
-            },
-            "keys": "ctrl+shift+p"
-        },
         {
             "command": 
             {
@@ -16,6 +10,13 @@
                 "singleLine": false
             },
             "keys": "ctrl+c"
+        },
+        {
+            "command": 
+            {
+                "action": "commandPalette"
+            },
+            "keys": "ctrl+shift+p"
         },
         {
             "command": "paste",
@@ -56,14 +57,12 @@
         [
             {
                 "colorScheme": "Campbell Powershell",
-                "commandline": "powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
                 "colorScheme": "Vintage",
-                "commandline": "cmd.exe",
                 "font": 
                 {
                     "face": "Cascadia Mono"
@@ -124,6 +123,24 @@
                 "guid": "{b2bb4fe8-5e2f-41c6-94bc-a064a28bf119}",
                 "hidden": false,
                 "name": "Deployment and Imaging"
+            },
+            {
+                "guid": "{d8e5fcb0-ff96-59cf-bd1b-bb115fdd2eab}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{c6dc562c-c73d-54e4-82c4-cbc64ac35c22}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{97f5f468-c9b4-55b3-81f4-73472430e7ff}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2017",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
