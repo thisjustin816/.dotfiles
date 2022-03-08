@@ -422,5 +422,7 @@
             "white": "#C0C0C0",
             "yellow": "#808000"
         }
-    ]
+    ],
+    "tabWidthMode": "compact",
+    "useAcrylicInTabRow": true
 }

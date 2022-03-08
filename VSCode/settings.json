@@ -284,7 +284,6 @@
         "yaml",
         "yml"
     ],
-    "files.autoSave": "afterDelay",
     "workbench.activityBar.visible": true,
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "visible",
@@ -435,5 +434,6 @@
     },
     "editor.guides.bracketPairs": true,
     "editor.bracketPairColorization.enabled": true,
-    "sqlDatabaseProjects.netCoreDowngradeDoNotShow": true
+    "sqlDatabaseProjects.netCoreDowngradeDoNotShow": true,
+    "files.autoSave": "afterDelay"
 }
