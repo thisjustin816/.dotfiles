@@ -61,4 +61,6 @@ Get-InstalledModule |
     Select-Object -Property Name, Version, Description |
     Format-Table
 
+. $profile
+
 Write-Progress @progress -Completed
