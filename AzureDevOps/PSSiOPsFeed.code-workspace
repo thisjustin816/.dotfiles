@@ -52,5 +52,22 @@
 			"name": "PSPulseSecurity",
 			"path": "PSPulseSecurity"
 		}
-	]
+	],
+	"settings": {
+		"conventionalCommits.scopes": [
+			"PSAzDevOps",
+			"PSCmTools",
+			"PSSiSharedFunctions",
+			"PSUtils",
+			"PSSiOps",
+			"PSSiDash",
+			"Install-PSSiOps",
+			"PSPulseConfig",
+			"PSPulseDev",
+			"PSPulseInstall",
+			"PSPulseFirewallConfig",
+			"PSPulse",
+			"PSPulseSecurity"
+		]
+	}
 }
