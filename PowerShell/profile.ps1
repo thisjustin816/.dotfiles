@@ -5,9 +5,9 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # PowerShell terminal customization
-Import-Module posh-git -ErrorAction Ignore
-Import-Module oh-my-posh -MinimumVersion 3.0.0 -ErrorAction Ignore
-if ( Get-Command Set-PoshPrompt -ErrorAction Ignore ) { Set-PoshPrompt -Theme Paradox }
+if ( Get-Command -Name "$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" -ErrorAction SilentlyContinue ) {
+    & "$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-Expression
+}
 
 # Azure VM helper functions
 function Start-DevVm {
