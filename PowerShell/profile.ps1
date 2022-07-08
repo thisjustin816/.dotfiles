@@ -5,7 +5,9 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # PowerShell terminal customization
-if ( Get-Command -Name "$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" -ErrorAction SilentlyContinue ) {
+$ohMyPosh = Get-Command -Name "$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" -ErrorAction SilentlyContinue
+$pwsh = $PSVersionTable.PSVersion.Major -gt 5
+if ($pwsh -and $ohMyPosh) {
     & "$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe" init pwsh --config="$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-Expression
 }
 

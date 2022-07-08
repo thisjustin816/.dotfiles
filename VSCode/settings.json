@@ -425,15 +425,15 @@
         }
     ],
     "editor.inlineSuggest.enabled": true,
-    "github.copilot.autocomplete.enable": true,
     "github.copilot.enable": {
         "*": true,
         "yaml": true,
         "plaintext": true,
-        "markdown": true
+        "markdown": true,
+        "bicep": false
     },
     "editor.guides.bracketPairs": true,
     "editor.bracketPairColorization.enabled": true,
-    "sqlDatabaseProjects.netCoreDowngradeDoNotShow": true,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
 }

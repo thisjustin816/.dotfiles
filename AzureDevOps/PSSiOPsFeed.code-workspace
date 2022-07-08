@@ -67,7 +67,10 @@
 			"PSPulseInstall",
 			"PSPulseFirewallConfig",
 			"PSPulse",
-			"PSPulseSecurity"
+			"PSPulseSecurity",
+			"Update-ImagingIp",
+			"Invoke-CmCmd",
+			"Add-NetFirewallRule"
 		]
 	}
 }
