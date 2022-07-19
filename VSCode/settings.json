@@ -430,10 +430,29 @@
         "yaml": true,
         "plaintext": true,
         "markdown": true,
-        "bicep": false
+        "bicep": false,
+        "azure-pipelines": false
     },
     "editor.guides.bracketPairs": true,
     "editor.bracketPairColorization.enabled": true,
     "files.autoSave": "afterDelay",
     "terminal.integrated.enableMultiLinePasteWarning": false,
+    "[azure-pipelines]": {
+        "gitlens.codeLens.scopes": [
+            "document"
+        ],
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        },
+        "editor.autoIndent": "full"
+    },
+    "azure.resourceFilter": [
+        "e37ef327-dda9-4efc-9fcc-9c81a3c33acb/684134a9-40c5-4c30-a481-7641c2762b6e",
+        "e37ef327-dda9-4efc-9fcc-9c81a3c33acb/cd8369b5-4d60-442e-bc64-42eb0b73b564"
+    ],
+    "git.ignoreRebaseWarning": true,
 }

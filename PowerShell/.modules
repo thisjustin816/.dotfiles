@@ -1,8 +1,14 @@
 ﻿7Zip4Powershell
+AudioDeviceCmdlets
 Az.Accounts
 Az.Compute
 Configuration
+DotNetVersionLister
 LoopbackAdapter
+Metadata
+nvm
+oh-my-posh
+PackageManagement
 Pester
 platyPS
 posh-git
