@@ -16,5 +16,7 @@
 			"path": "InitializeDisplays"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"powershell.cwd": "c:\\azrepos\\PulseImaging"
+	}
 }

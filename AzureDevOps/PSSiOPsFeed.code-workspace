@@ -70,7 +70,10 @@
 			"PSPulseSecurity",
 			"Update-ImagingIp",
 			"Invoke-CmCmd",
-			"Add-NetFirewallRule"
-		]
+			"Add-NetFirewallRule",
+			"Get-PulseEnvironment",
+			"Get-PullRequest"
+		],
+		"powershell.cwd": "c:\\azrepos\\PSAzDevOps"
 	}
 }

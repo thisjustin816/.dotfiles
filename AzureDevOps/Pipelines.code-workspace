@@ -31,6 +31,7 @@
 			"cmcomponent",
 			"logissue",
 			"sonarcloud"
-		]
+		],
+		"powershell.cwd": "c:\\azrepos\\PipelineTasks"
 	}
 }

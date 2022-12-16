@@ -55,9 +55,17 @@
 	],
 	"settings": {
 		"cSpell.words": [
+			"alldb",
+			"masterdb",
 			"PSISTLs",
+			"pulseinstaller",
+			"sessiondb",
 			"STLs",
-			"pulseinstaller"
-		]
+			"uidb"
+		],
+		"conventionalCommits.scopes": [
+			"Install-Pulse.ps1"
+		],
+		"powershell.cwd": "c:\\azrepos\\WindowsUpdatesBin"
 	}
 }
