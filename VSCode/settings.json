@@ -360,37 +360,21 @@
     "git.autoStash": true,
     "git.allowForcePush": true,
     "git.fetchOnPull": true,
-    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
     "workbench.enableExperiments": false,
-    "powershell.codeFormatting.autoCorrectAliases": true,
-    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
-    "powershell.codeFormatting.useCorrectCasing": true,
     "workbench.iconTheme": "material-icon-theme",
     "window.zoomLevel": 0,
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
     "editor.fontFamily": "'CaskaydiaCove NF', Consolas, 'Courier New', monospace",
-    "terminal.integrated.automationShell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    "powershell.powerShellAdditionalExePaths": [
-        { 
-            "exePath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-            "versionName": "PowerShell (x64)"
-        }
-    ],
     "explorer.confirmDragAndDrop": false,
-    "powershell.pester.outputVerbosity": "Detailed",
-    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
-    "powershell.scriptAnalysis.settingsPath": "${env:APPDATA}\\Code\\User\\PSScriptAnalyzerSettings.psd1",
     "files.associations": {
         "*.yml": "azure-pipelines"
     },
-    "powershell.codeFormatting.whitespaceBetweenParameters": true,
     "editor.fontSize": 12,
     "debug.console.fontSize": 12,
     "markdown.preview.fontSize": 12,
     "terminal.integrated.fontSize": 12,
     "explorer.confirmDelete": false,
-    "powershell.pester.useLegacyCodeLens": false,
     "liveshare.allowGuestDebugControl": true,
     "liveshare.allowGuestTaskControl": true,
     "liveshare.focusBehavior": "prompt",
@@ -410,7 +394,6 @@
     "workbench.productIconTheme": "material-product-icons",
     "glassit.alpha": 255,
     "redhat.telemetry.enabled": true,
-    "powershell.codeFormatting.useConstantStrings": true,
     "editor.semanticHighlighting.enabled": true,
     "security.workspace.trust.untrustedFiles": "open",
     "[powershell]": {
@@ -457,4 +440,14 @@
         "e37ef327-dda9-4efc-9fcc-9c81a3c33acb/cd8369b5-4d60-442e-bc64-42eb0b73b564"
     ],
     "git.ignoreRebaseWarning": true,
+    "powershell.buttons.showPanelMovementButtons": true,
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+    "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+    "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.useConstantStrings": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "powershell.pester.useLegacyCodeLens": false,
+    "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
 }
