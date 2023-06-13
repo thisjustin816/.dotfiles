@@ -6,6 +6,7 @@
         "accesstoken",
         "ACCESTOKEN",
         "Accustream",
+        "ampl",
         "APPDATA",
         "applydir",
         "artifactignore",
@@ -234,6 +235,7 @@
         "visualstudio",
         "vm",
         "VM's",
+        "Vmss",
         "VNET",
         "vsts",
         "vswhere",
@@ -241,6 +243,7 @@
         "WHQL",
         "wifi",
         "WINDIR",
+        "winget",
         "winpe",
         "Wireshark",
         "wlan",
@@ -286,7 +289,6 @@
         "yaml",
         "yml"
     ],
-    "workbench.activityBar.visible": true,
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "visible",
     "editor.renderWhitespace": "all",
@@ -361,11 +363,10 @@
     "git.allowForcePush": true,
     "git.fetchOnPull": true,
     "workbench.enableExperiments": false,
-    "workbench.iconTheme": "material-icon-theme",
     "window.zoomLevel": 0,
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
-    "editor.fontFamily": "'CaskaydiaCove NF', Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace",
     "explorer.confirmDragAndDrop": false,
     "files.associations": {
         "*.yml": "azure-pipelines"
@@ -450,4 +451,8 @@
     "powershell.codeFormatting.whitespaceBetweenParameters": true,
     "powershell.pester.useLegacyCodeLens": false,
     "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
+    "powershell.pester.outputVerbosity": "Detailed",
+    "terminal.integrated.fontFamily": "'CaskaydiaCove NF', Consolas, 'Courier New', monospace",
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "material-icon-theme",
 }

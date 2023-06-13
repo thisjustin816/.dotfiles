@@ -1,1 +1,1 @@
-"$env:SystemDrive\azrepos"
+"D:\azrepos"

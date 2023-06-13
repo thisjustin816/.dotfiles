@@ -14,6 +14,13 @@
         {
             "command": 
             {
+                "action": "commandPalette"
+            },
+            "keys": "ctrl+shift+p"
+        },
+        {
+            "command": 
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -27,13 +34,6 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
-        },
-        {
-            "command": 
-            {
-                "action": "commandPalette"
-            },
-            "keys": "ctrl+shift+p"
         }
     ],
     "alwaysShowTabs": false,
@@ -42,6 +42,12 @@
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "largePasteWarning": false,
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": 
     {
         "defaults": 
@@ -49,11 +55,12 @@
             "elevate": true,
             "font": 
             {
-                "face": "CaskaydiaCove NF",
-                "size": 10
+                "face": "Cascadia Code PL",
+                "size": 10.0
             },
             "opacity": 80,
-            "useAcrylic": true
+            "useAcrylic": true,
+            "useAtlasEngine": true
         },
         "list": 
         [
@@ -101,7 +108,7 @@
                 "hidden": false,
                 "icon": "C:\\Users\\jbeeson\\OneDrive - Nuvasive Inc\\Pictures\\NuVa Logos\\Teardrop_digital_PNG\\Digital_PNG\\nuva-drop-rgb-color.png",
                 "name": "CM Tools Shell",
-                "startingDirectory": "%SYSTEMDRIVE%\\pulse"
+                "startingDirectory": "D:\\"
             },
             {
                 "colorScheme": "Raspberry",
@@ -139,12 +146,6 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "guid": "{97f5f468-c9b4-55b3-81f4-73472430e7ff}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2017",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
                 "guid": "{65d1d78f-b88f-5ff8-ae70-d63eff56361e}",
                 "hidden": false,
                 "name": "Developer Command Prompt for VS 2022",
@@ -161,6 +162,18 @@
                 "hidden": true,
                 "name": "Visual Studio Debug Console",
                 "source": "VSDebugConsole"
+            },
+            {
+                "guid": "{c82b0054-113a-516b-a258-c03c9ad7366a}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022 (2)",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{e1ec464c-87ea-5472-8e92-ddb82072c875}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022 (2)",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
@@ -444,5 +457,50 @@
         }
     ],
     "tabWidthMode": "compact",
+    "themes": 
+    [
+        {
+            "name": "legacyDark",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "dark",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacyLight",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "light",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacySystem",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "system",
+                "useMica": false
+            }
+        }
+    ],
     "useAcrylicInTabRow": true
 }
