@@ -75,7 +75,6 @@ slack
 tortoisegit
 vcredist140
 vcredist2015
-visualstudio2017enterprise
 visualstudio2019enterprise
 visualstudio2019-workload-datascience
 visualstudio2019-workload-manageddesktop
@@ -83,6 +82,12 @@ visualstudio2019-workload-nativedesktop
 visualstudio2019-workload-netcoretools
 visualstudio2019-workload-netweb
 visualstudio2019-workload-node
+visualstudio2022enterprise
+visualstudio2022-workload-datascience
+visualstudio2022-workload-manageddesktop
+visualstudio2022-workload-nativedesktop
+visualstudio2022-workload-netweb
+visualstudio2022-workload-node
 visualstudio-installer
 vscode
 vscode.install

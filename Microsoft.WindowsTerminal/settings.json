@@ -134,46 +134,16 @@
                 "name": "Deployment and Imaging"
             },
             {
-                "guid": "{d8e5fcb0-ff96-59cf-bd1b-bb115fdd2eab}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 2019",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{c6dc562c-c73d-54e4-82c4-cbc64ac35c22}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 2019",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{65d1d78f-b88f-5ff8-ae70-d63eff56361e}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{5e806120-44b4-54fb-9820-f9893e3ea0d4}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "guid": "{73f21fa1-e92d-5a3b-94b6-79a182c5ccd0}",
                 "hidden": true,
-                "name": "Visual Studio Debug Console",
-                "source": "VSDebugConsole"
-            },
-            {
-                "guid": "{c82b0054-113a-516b-a258-c03c9ad7366a}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 2022 (2)",
+                "name": "Developer Command Prompt for VS 2017",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "guid": "{e1ec464c-87ea-5472-8e92-ddb82072c875}",
+                "guid": "{5fb123f1-af88-5b5c-8953-d14a8def1978}",
                 "hidden": false,
-                "name": "Developer PowerShell for VS 2022 (2)",
-                "source": "Windows.Terminal.VisualStudio"
+                "name": "PowerShell 7",
+                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },

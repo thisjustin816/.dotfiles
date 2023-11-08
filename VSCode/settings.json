@@ -38,6 +38,7 @@
         "Cmdlets",
         "Cobertura",
         "codecoverage",
+        "COLLECTIONURI",
         "computername",
         "Connectify",
         "copyinstaller",
@@ -98,6 +99,7 @@
         "ireplace",
         "isnot",
         "jbeeson",
+        "JOBNAME",
         "JPGs",
         "languageignore",
         "LASTEXITCODE",
@@ -159,6 +161,7 @@
         "preinstallation",
         "PSHOME",
         "psifunctions",
+        "PSMODULEPATH",
         "PSSIOPS",
         "pulsebase",
         "pushd",
@@ -168,6 +171,7 @@
         "Reagentc",
         "realtek",
         "Recurse",
+        "Redistributable",
         "repo",
         "repo's",
         "reportgenerator",
@@ -208,6 +212,7 @@
         "SYSTEMROOT",
         "takeown",
         "taskkill",
+        "TEAMPROJECT",
         "theming",
         "Thunderhawk",
         "Tmap",
@@ -363,7 +368,6 @@
     "git.allowForcePush": true,
     "git.fetchOnPull": true,
     "workbench.enableExperiments": false,
-    "window.zoomLevel": 0,
     "gitlens.blame.dateFormat": "",
     "editor.fontLigatures": true,
     "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace",
@@ -400,7 +404,8 @@
     "[powershell]": {
         "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
         "editor.semanticHighlighting.enabled": true,
-        "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?"
+        "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+        "editor.defaultFormatter": "ms-vscode.powershell"
     },
     "mssql.connections": [
         {
@@ -413,11 +418,13 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": true,
         "plaintext": true,
         "markdown": true,
-        "bicep": false,
-        "azure-pipelines": false
+        "scminput": false,
+        "yaml": true,
+        "bicep": true,
+        "azure-pipelines": true,
+        "powershell": true
     },
     "editor.guides.bracketPairs": true,
     "editor.bracketPairColorization.enabled": true,
@@ -455,4 +462,17 @@
     "terminal.integrated.fontFamily": "'CaskaydiaCove NF', Consolas, 'Courier New', monospace",
     "workbench.colorTheme": "Default Dark+",
     "workbench.iconTheme": "material-icon-theme",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "codeQL.telemetry.enableTelemetry": true,
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.openRepositoryInParentFolders": "always"
 }
