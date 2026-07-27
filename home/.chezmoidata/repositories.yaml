@@ -1,0 +1,22 @@
+repositories:
+  github_dotfiles:
+    path: repos/github/.dotfiles
+    url: https://github.com/thisjustin816/.dotfiles.git
+  github_jbutils:
+    path: repos/github/JBUtils
+    url: https://github.com/thisjustin816/JBUtils.git
+  github_psscriptanalyzer:
+    path: repos/github/PSScriptAnalyzer
+    url: https://github.com/PowerShell/PSScriptAnalyzer.git
+  github_psmoduleutils:
+    path: repos/github/PSModuleUtils
+    url: https://github.com/thisjustin816/PSModuleUtils.git
+  github_red_telephone_inc:
+    path: repos/github/red-telephone-inc
+    url: https://github.com/thisjustin816/red-telephone-inc.git
+  github_reusable_workflows:
+    path: repos/github/reusable-workflows
+    url: https://github.com/thisjustin816/reusable-workflows.git
+  github_terraform_null_label:
+    path: repos/github/terraform-null-label
+    url: https://github.com/thisjustin816/terraform-null-label.git

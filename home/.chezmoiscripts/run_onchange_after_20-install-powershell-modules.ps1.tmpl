@@ -1,0 +1,35 @@
+{{ if or (eq .chezmoi.os "windows") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env pwsh
+#Requires -Version 7.4
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+$moduleNames = @(
+{{ range .powershellModules.common -}}
+    {{ . | quote }}
+{{ end -}}
+{{ if eq .chezmoi.os "windows" -}}
+{{ range .powershellModules.windows -}}
+    {{ . | quote }}
+{{ end -}}
+{{ end -}}
+)
+
+foreach ($moduleName in $moduleNames) {
+    if (Get-Module -Name $moduleName -ListAvailable) {
+        Write-Verbose -Message "$moduleName is already installed."
+        continue
+    }
+
+    Install-PSResource `
+        -Name $moduleName `
+        -Repository 'PSGallery' `
+        -Scope CurrentUser `
+        -TrustRepository `
+        -AcceptLicense `
+        -Quiet
+}
+{{ end -}}

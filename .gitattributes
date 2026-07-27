@@ -1,2 +1,5 @@
-*.exe filter=lfs diff=lfs merge=lfs -text
-*.dll filter=lfs diff=lfs merge=lfs -text
+* text=auto
+*.ps1 text eol=lf
+*.psd1 text eol=lf
+*.sh text eol=lf
+*.tmpl text eol=lf
