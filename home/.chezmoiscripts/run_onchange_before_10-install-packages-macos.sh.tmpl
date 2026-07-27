@@ -1,0 +1,19 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+set -eu
+
+if ! command -v brew >/dev/null 2>&1; then
+    echo "Homebrew is required before applying these dotfiles." >&2
+    exit 1
+fi
+
+brew bundle --file=/dev/stdin <<'BREWFILE'
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+BREWFILE
+{{ end -}}

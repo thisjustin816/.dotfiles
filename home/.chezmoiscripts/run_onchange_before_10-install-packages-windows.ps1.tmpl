@@ -1,0 +1,36 @@
+{{ if eq .chezmoi.os "windows" -}}
+#Requires -Version 7
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+if (-not (Get-Command -Name 'winget' -ErrorAction SilentlyContinue)) {
+    throw 'WinGet is required before applying these dotfiles.'
+}
+
+$packageIds = @(
+{{ range .packages.windows.winget -}}
+    {{ . | quote }}
+{{ end -}}
+)
+
+foreach ($packageId in $packageIds) {
+    & winget list --id $packageId --exact --accept-source-agreements
+    if ($LASTEXITCODE -eq 0) {
+        Write-Verbose -Message "$packageId is already installed."
+        continue
+    }
+
+    & winget install `
+        --id $packageId `
+        --exact `
+        --source winget `
+        --accept-package-agreements `
+        --accept-source-agreements
+    if ($LASTEXITCODE -ne 0) {
+        throw "WinGet failed to install $packageId."
+    }
+}
+{{ end -}}

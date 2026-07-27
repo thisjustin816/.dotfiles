@@ -1,0 +1,9 @@
+powershellModules:
+  common:
+    - Configuration
+    - Pester
+    - posh-git
+    - PSScriptAnalyzer
+    - PSModuleUtils
+  windows:
+    - PSWindowsUpdate
