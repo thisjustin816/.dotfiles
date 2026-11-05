@@ -1,27 +1,47 @@
 packages:
   darwin:
     brews:
-      - azure-cli
+      - awscli
+      - chezmoi
       - gh
       - git
+      - git-lfs
+      - hashicorp/tap/terraform
       - jandedobbeleer/oh-my-posh/oh-my-posh
       - node
+      - powershell
+      - ripgrep
       - sevenzip
     casks:
       - adobe-acrobat-reader
+      - azure-cli
+      - chatgpt
+      - claude
+      - claude-code
+      - codex
+      - copilot-cli
+      - docker-desktop
       - dotnet-sdk
+      - font-caskaydia-cove-nerd-font
       - google-chrome
-      - powershell
       - temurin@21
       - visual-studio-code
   windows:
     winget:
       - 7zip.7zip
       - Adobe.Acrobat.Reader.64-bit
+      - Amazon.AWSCLI
+      - Anthropic.Claude
+      - Anthropic.ClaudeCode
+      - BurntSushi.ripgrep.MSVC
+      - CodeZeno.ClaudeCodeUsageMonitor
+      - Docker.DockerDesktop
       - EclipseAdoptium.Temurin.21.JDK
       - Git.Git
       - GitHub.cli
+      - GitHub.Copilot
       - Google.Chrome
+      - Hashicorp.Terraform
       - JanDeDobbeleer.OhMyPosh
       - Microsoft.AzureCLI
       - Microsoft.DotNet.SDK.8
@@ -30,4 +50,7 @@ packages:
       - Microsoft.VisualStudioCode
       - Microsoft.WindowsTerminal
       - NickeManarin.ScreenToGif
+      - OpenAI.ChatGPT
+      - OpenAI.Codex
       - OpenJS.NodeJS.LTS
+      - twpayne.chezmoi

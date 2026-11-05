@@ -1,4 +1,13 @@
 repositories:
+  agents:
+    path: .agents
+    url: https://github.com/thisjustin816/.agents.git
+  claude:
+    path: .claude
+    url: https://github.com/thisjustin816/.claude.git
+  codex:
+    path: .codex
+    url: https://github.com/thisjustin816/.codex.git
   github_dotfiles:
     path: repos/github/.dotfiles
     url: https://github.com/thisjustin816/.dotfiles.git
