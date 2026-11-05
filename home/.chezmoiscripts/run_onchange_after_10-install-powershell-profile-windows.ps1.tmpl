@@ -1,0 +1,24 @@
+{{ if eq .chezmoi.os "windows" -}}
+#Requires -Version 7
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+# OneDrive can redirect the Documents known folder away from $HOME/Documents, so chezmoi cannot
+# manage the profile as a fixed target path. PowerShell has no cmdlet that resolves known folders.
+$profileDirectory = New-Item `
+    -Path (Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'PowerShell') `
+    -ItemType Directory `
+    -Force
+
+$profileContent = @'
+{{ includeTemplate "powershell-profile.ps1" . | trim }}
+'@
+
+Set-Content `
+    -LiteralPath (Join-Path $profileDirectory.FullName 'Microsoft.PowerShell_profile.ps1') `
+    -Value $profileContent `
+    -Encoding utf8NoBOM
+{{ end -}}

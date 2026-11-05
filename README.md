@@ -36,10 +36,12 @@ After forking, edit these files instead of the templates that reference them:
 
 - `home/.chezmoidata/packages.yaml`: Homebrew and winget packages to install.
 - `home/.chezmoidata/powershell.yaml`: PowerShell modules to install.
-- `home/.chezmoidata/repositories.yaml`: Git repositories to clone under
-  `~/repos`.
-- `home/dot_gitconfig.tmpl`: Git settings beyond name and email, which
-  chezmoi prompts for on first `chezmoi init`.
+- `home/.chezmoidata/repositories.yaml`: Git repositories to clone beneath
+  the home directory, such as `~/repos` or agent configuration folders.
+- `home/dot_config/git/config.tmpl`: Git settings beyond name and email,
+  which chezmoi prompts for on first `chezmoi init`. Git reads this file as
+  well as `~/.gitconfig`, which stays unmanaged for machine-specific settings
+  and for settings that tools such as `gh auth setup-git` write.
 
 Repositories that shouldn't be public (a work account, a private fork) go in
 a separate, gitignored `home/.chezmoidata/repositories.local.json` instead of
@@ -49,10 +51,12 @@ generate that file from an existing checkout.
 
 ## Windows setup
 
-Install chezmoi if needed:
+Install Git, then clone your fork:
 
 ```powershell
-winget install --id twpayne.chezmoi --exact
+winget install --id Git.Git --exact --source winget
+git clone https://github.com/<you>/.dotfiles.git "$HOME/repos/github/.dotfiles"
+Set-Location "$HOME/repos/github/.dotfiles"
 ```
 
 If you already have working copies under `$HOME/repos`, export them into the
@@ -62,26 +66,22 @@ local repository list first:
 pwsh -File ./scripts/Export-RepositoryManifest.ps1
 ```
 
-Initialize chezmoi from this checkout, inspect the proposed changes, and
-apply them:
+Run the install script from Windows PowerShell:
 
 ```powershell
-chezmoi init --source $PWD.Path
-chezmoi diff
-chezmoi apply
+powershell -ExecutionPolicy Bypass -File ./install.ps1
 ```
+
+The script installs PowerShell 7, Git, the GitHub CLI, and chezmoi with
+WinGet, and signs Git in to GitHub in the browser so that private
+repositories can clone. It then runs `chezmoi init --apply` with this
+checkout as the source. On a machine that is already set up, review the
+changes first with `chezmoi init --source $PWD.Path` and `chezmoi diff`.
 
 The repository script clones missing repositories and reports the status of
 existing repositories. It never pulls, resets, or overwrites a working copy.
 
 ## macOS setup
-
-Install Homebrew, then install the bootstrap tools:
-
-```sh
-brew install chezmoi git
-brew install --cask powershell
-```
 
 Clone your fork into the standard development location:
 
@@ -92,17 +92,24 @@ cd ~/repos/github/.dotfiles
 ```
 
 To carry over a private repository list from another machine, copy its
-`home/.chezmoidata/repositories.local.json` here before applying chezmoi.
+`home/.chezmoidata/repositories.local.json` here before you run the install
+script.
 
-Initialize, inspect, and apply:
+Run the install script:
 
 ```sh
-chezmoi init --source "$PWD"
-chezmoi diff
-chezmoi apply
+./install.sh
 ```
 
-Enable VS Code Settings Sync after VS Code is installed.
+The script installs Homebrew if it is missing, installs chezmoi and the
+GitHub CLI, and signs Git in to GitHub in the browser so that private
+repositories can clone. It then runs `chezmoi init --apply` with this
+checkout as the source. The first macOS `git` command can prompt you to
+install the Xcode Command Line Tools; accept and run `git clone` again.
+
+Enable VS Code Settings Sync after VS Code is installed. Set the terminal
+font to CaskaydiaCove Nerd Font so the oh-my-posh prompt renders its
+glyphs.
 
 ## Daily use
 

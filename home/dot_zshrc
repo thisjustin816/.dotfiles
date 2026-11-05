@@ -1,6 +1,11 @@
-if command -v brew >/dev/null 2>&1; then
-    eval "$(brew shellenv)"
-fi
+# A new shell may not have Homebrew on PATH yet, so look in both install
+# prefixes (Apple Silicon first, then Intel).
+for brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+    if [ -x "$brew_path" ]; then
+        eval "$("$brew_path" shellenv)"
+        break
+    fi
+done
 
 if command -v oh-my-posh >/dev/null 2>&1 && [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
     eval "$(oh-my-posh init zsh)"
