@@ -75,8 +75,8 @@ powershell -ExecutionPolicy Bypass -File ./install.ps1
 The script installs PowerShell 7, Git, the GitHub CLI, and chezmoi with
 WinGet, and signs Git in to GitHub in the browser so that private
 repositories can clone. It then runs `chezmoi init --apply` with this
-checkout as the source. On a machine that is already set up, review the
-changes first with `chezmoi init --source $PWD.Path` and `chezmoi diff`.
+checkout as the source. Add `-WhatIf` to list the packages it would
+install and show `chezmoi diff` without changing anything.
 
 The repository script clones missing repositories and reports the status of
 existing repositories. It never pulls, resets, or overwrites a working copy.
@@ -104,8 +104,10 @@ Run the install script:
 The script installs Homebrew if it is missing, installs chezmoi and the
 GitHub CLI, and signs Git in to GitHub in the browser so that private
 repositories can clone. It then runs `chezmoi init --apply` with this
-checkout as the source. The first macOS `git` command can prompt you to
-install the Xcode Command Line Tools; accept and run `git clone` again.
+checkout as the source. Add `--dry-run` to report what it would install and
+show `chezmoi diff` without changing anything. The first macOS `git`
+command can prompt you to install the Xcode Command Line Tools; accept and
+run `git clone` again.
 
 Enable VS Code Settings Sync after VS Code is installed. Set the terminal
 font to CaskaydiaCove Nerd Font so the oh-my-posh prompt renders its
