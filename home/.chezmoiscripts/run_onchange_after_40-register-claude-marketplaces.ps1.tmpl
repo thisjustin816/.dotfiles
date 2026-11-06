@@ -1,0 +1,50 @@
+{{ if or (eq .chezmoi.os "windows") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env pwsh
+#Requires -Version 7
+
+# Registers directory marketplaces with Claude Code. Claude stores the absolute path,
+# so settings.json carries no machine-specific path. Runs after the repositories sync.
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+$marketplaces = @(
+{{ range $name := keys .claude_marketplaces | sortAlpha -}}
+{{ $marketplace := index $.claude_marketplaces $name -}}
+    [PSCustomObject]@{
+        Name = {{ $name | quote }}
+        RelativePath = {{ $marketplace.path | quote }}
+    }
+{{ end -}}
+)
+
+if (-not (Get-Command -Name claude -ErrorAction SilentlyContinue)) {
+    Write-Warning -Message 'The claude CLI is not on PATH; skipping marketplace registration.'
+    return
+}
+
+$registered = (& claude plugin marketplace list) -join "`n"
+if ($LASTEXITCODE -ne 0) {
+    throw 'claude failed to list marketplaces.'
+}
+
+foreach ($marketplace in $marketplaces) {
+    $marketplacePath = Join-Path $HOME $marketplace.RelativePath
+    if (-not (Test-Path -LiteralPath $marketplacePath)) {
+        Write-Warning -Message "$marketplacePath does not exist yet; skipping $($marketplace.Name)."
+        continue
+    }
+    if ($registered -match "(?m)^\s*>\s*$([regex]::Escape($marketplace.Name))\s*$") {
+        Write-Output "Marketplace already registered: $($marketplace.Name)"
+        continue
+    }
+
+    Write-Output "Registering marketplace $($marketplace.Name) from $marketplacePath"
+    & claude plugin marketplace add $marketplacePath
+    if ($LASTEXITCODE -ne 0) {
+        throw "claude failed to register $($marketplace.Name)."
+    }
+}
+{{ end -}}
