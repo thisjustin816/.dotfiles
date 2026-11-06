@@ -1,0 +1,60 @@
+{{ if or (eq .chezmoi.os "windows") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env pwsh
+#Requires -Version 7
+
+# Seeds the Codex subagent defaults in ~/.codex/config.toml. Codex rewrites that file and it holds
+# machine-local state, so it stays untracked and this script adds only the keys that are missing.
+# TOML scopes a key to the table above it, so the keys go before the first table header.
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+$defaults = [ordered]@{
+    default_subagent_model            = 'gpt-6-luna'
+    default_subagent_reasoning_effort = 'low'
+}
+
+$configDirectory = New-Item -ItemType Directory -Path (Join-Path $HOME '.codex') -Force
+$configPath = Join-Path $configDirectory.FullName 'config.toml'
+$lines = @(
+    if (Test-Path -LiteralPath $configPath) {
+        Get-Content -LiteralPath $configPath
+    }
+)
+
+$firstTableIndex = 0
+while ($firstTableIndex -lt $lines.Count -and $lines[$firstTableIndex] -notmatch '^\s*\[') {
+    $firstTableIndex++
+}
+$topLevelLines = $lines | Select-Object -First $firstTableIndex
+$insertIndex = $firstTableIndex
+while ($insertIndex -gt 0 -and [string]::IsNullOrWhiteSpace($lines[$insertIndex - 1])) {
+    $insertIndex--
+}
+
+$missingLines = @(
+    foreach ($key in $defaults.Keys) {
+        if (-not ($topLevelLines -match "^\s*$([regex]::Escape($key))\s*=")) {
+            "$key = `"$($defaults[$key])`""
+        }
+    }
+)
+
+if ($missingLines.Count -eq 0) {
+    Write-Output "Codex subagent defaults already set in $configPath"
+    return
+}
+
+$updatedLines = @(
+    $lines | Select-Object -First $insertIndex
+    $missingLines
+    if ($firstTableIndex -lt $lines.Count) {
+        ''
+        $lines | Select-Object -Skip $firstTableIndex
+    }
+)
+Set-Content -LiteralPath $configPath -Value $updatedLines -Encoding utf8NoBOM
+Write-Output "Added to ${configPath}: $($missingLines -join ', ')"
+{{ end -}}
