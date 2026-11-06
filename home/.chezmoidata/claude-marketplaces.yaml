@@ -1,0 +1,6 @@
+# Local directory marketplaces to register with Claude Code. Each key is the
+# marketplace name from its marketplace.json; path is relative to the home directory.
+# Machine-specific entries belong in claude-marketplaces.local.yaml, which merges by key.
+claude_marketplaces:
+  personal-agent-skills:
+    path: .agents
