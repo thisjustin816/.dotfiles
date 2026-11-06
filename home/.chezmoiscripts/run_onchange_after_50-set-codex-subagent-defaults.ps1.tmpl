@@ -4,7 +4,7 @@
 
 # Seeds the Codex subagent defaults in ~/.codex/config.toml. Codex rewrites that file and it holds
 # machine-local state, so it stays untracked and this script adds only the keys that are missing.
-# TOML scopes a key to the table above it, so the keys go before the first table header.
+# Codex reads these keys only from the [agents] table and ignores a top-level copy, so one is removed.
 
 [CmdletBinding()]
 param()
@@ -15,6 +15,10 @@ $defaults = [ordered]@{
     default_subagent_model            = 'gpt-6-luna'
     default_subagent_reasoning_effort = 'low'
 }
+$headerPattern = '^\s*\['
+$defaultKeyPattern = (
+    '^\s*(' + (@($defaults.Keys).ForEach({ [regex]::Escape($_) }) -join '|') + ')\s*='
+)
 
 $configDirectory = New-Item -ItemType Directory -Path (Join-Path $HOME '.codex') -Force
 $configPath = Join-Path $configDirectory.FullName 'config.toml'
@@ -25,36 +29,84 @@ $lines = @(
 )
 
 $firstTableIndex = 0
-while ($firstTableIndex -lt $lines.Count -and $lines[$firstTableIndex] -notmatch '^\s*\[') {
+while ($firstTableIndex -lt $lines.Count -and $lines[$firstTableIndex] -notmatch $headerPattern) {
     $firstTableIndex++
 }
-$topLevelLines = $lines | Select-Object -First $firstTableIndex
-$insertIndex = $firstTableIndex
-while ($insertIndex -gt 0 -and [string]::IsNullOrWhiteSpace($lines[$insertIndex - 1])) {
-    $insertIndex--
+$topLevelLines = @($lines | Select-Object -First $firstTableIndex)
+$strayLines = @($topLevelLines -match $defaultKeyPattern)
+$lines = @(
+    $topLevelLines -notmatch $defaultKeyPattern
+    $lines | Select-Object -Skip $firstTableIndex
+)
+$firstTableIndex -= $strayLines.Count
+
+$agentsIndex = -1
+for ($i = 0; $i -lt $lines.Count; $i++) {
+    if ($lines[$i] -match '^\s*\[\s*agents\s*\]\s*(#.*)?$') {
+        $agentsIndex = $i
+        break
+    }
+}
+
+if ($agentsIndex -ge 0) {
+    $bodyStart = $agentsIndex + 1
+    $bodyEnd = $bodyStart
+    while ($bodyEnd -lt $lines.Count -and $lines[$bodyEnd] -notmatch $headerPattern) {
+        $bodyEnd++
+    }
+    $agentsBody = @($lines | Select-Object -Skip $bodyStart -First ($bodyEnd - $bodyStart))
+}
+else {
+    $bodyStart = 0
+    $bodyEnd = $firstTableIndex
+    $agentsBody = @()
 }
 
 $missingLines = @(
     foreach ($key in $defaults.Keys) {
-        if (-not ($topLevelLines -match "^\s*$([regex]::Escape($key))\s*=")) {
+        if (-not ($agentsBody -match "^\s*$([regex]::Escape($key))\s*=")) {
             "$key = `"$($defaults[$key])`""
         }
     }
 )
 
-if ($missingLines.Count -eq 0) {
+if ($missingLines.Count -eq 0 -and $strayLines.Count -eq 0) {
     Write-Output "Codex subagent defaults already set in $configPath"
     return
 }
 
+$insertIndex = $bodyEnd
+while ($insertIndex -gt $bodyStart -and [string]::IsNullOrWhiteSpace($lines[$insertIndex - 1])) {
+    $insertIndex--
+}
+
 $updatedLines = @(
     $lines | Select-Object -First $insertIndex
-    $missingLines
-    if ($firstTableIndex -lt $lines.Count) {
-        ''
-        $lines | Select-Object -Skip $firstTableIndex
+    if ($agentsIndex -ge 0) {
+        $missingLines
+        $lines | Select-Object -Skip $insertIndex
+    }
+    else {
+        if ($insertIndex -gt 0) {
+            ''
+        }
+        '[agents]'
+        $missingLines
+        if ($bodyEnd -lt $lines.Count) {
+            ''
+            $lines | Select-Object -Skip $bodyEnd
+        }
     }
 )
 Set-Content -LiteralPath $configPath -Value $updatedLines -Encoding utf8NoBOM
-Write-Output "Added to ${configPath}: $($missingLines -join ', ')"
+
+$changes = @(
+    if ($missingLines.Count -gt 0) {
+        "added $($missingLines -join ', ') to [agents]"
+    }
+    if ($strayLines.Count -gt 0) {
+        "removed top-level $($strayLines -join ', ')"
+    }
+)
+Write-Output "Updated ${configPath}: $($changes -join '; ')"
 {{ end -}}
