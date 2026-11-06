@@ -113,6 +113,47 @@ Enable VS Code Settings Sync after VS Code is installed. Set the terminal
 font to CaskaydiaCove Nerd Font so the oh-my-posh prompt renders its
 glyphs.
 
+### Agent-assisted setup
+
+A Claude Code session on a machine that is already set up can drive the
+macOS setup through
+[cross-session messaging](https://code.claude.com/docs/en/cross-session-messaging).
+Both sessions must sign in to the same claude.ai account, and on a Team or
+Enterprise plan an owner must turn on Remote Control in the Claude Code admin
+settings.
+
+1. Install Claude Code on the Mac. The native installer needs no developer
+   tools. Start it once and sign in with your claude.ai account:
+
+   ```sh
+   curl -fsSL https://claude.ai/install.sh | bash
+   claude
+   ```
+
+2. Exit, then start a named Remote Control session from your home directory:
+
+   ```sh
+   cd ~
+   claude --remote-control "mac-setup"
+   ```
+
+3. Paste this prompt into the Mac session:
+
+   ```text
+   This Mac is new. A Claude Code session on my other machine will send you
+   setup steps with SendMessage. Run each step it sends, then reply to it
+   with SendMessage, including the command output and any errors. When a step
+   needs sudo, a password, or a GUI prompt, stop and ask me to do that part.
+   Do not do other work unless I ask for it.
+   ```
+
+4. On the other machine, run `/remote-control` in its Claude Code session,
+   then `/list-agents`. The `mac-setup` session shows as a Remote Control row.
+   Ask that session to set up the Mac from this README.
+
+The Homebrew install, the Xcode Command Line Tools prompt, and the GitHub
+browser sign-in need you at the Mac.
+
 ## Daily use
 
 Pull the source repository and apply changes:
