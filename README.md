@@ -13,6 +13,7 @@ Chezmoi manages:
 - Applications and command-line tools
 - PowerShell modules
 - Repository cloning and configuration repository updates
+- Selected agent skill exports and runtime copies
 
 VS Code settings, keybindings, profiles, and extensions use VS Code Settings
 Sync instead. Credentials and private repository information stay out of the
@@ -48,6 +49,44 @@ a separate, gitignored `home/.chezmoidata/repositories.local.json` instead of
 `repositories.yaml`. Chezmoi merges both files into the same repository list
 at apply time. See `scripts/Export-RepositoryManifest.ps1` for one way to
 generate that file from an existing checkout.
+
+## Restore exported agent skills
+
+Cloning agent configuration repositories does not restore gitignored skills.
+For a reviewed skill repository that provides `tools/Export-Skill.ps1`, add a
+`skills` list to its repository declaration. Keep private source locations in
+`home/.chezmoidata/repositories.local.json`:
+
+```json
+{
+  "repositories": {
+    "shared_skills": {
+      "path": "repos/shared-skills",
+      "url": "https://example.invalid/team/skills.git",
+      "skills": ["example-workflow"]
+    }
+  }
+}
+```
+
+After repository setup, each apply exports missing selected skills into
+`~/.agents/skills`, including supporting scripts and references. If `~/.claude`
+exists, missing runtime copies come from the installed portable skill. Existing
+skills and runtime edits are preserved. An incomplete directory stops the apply
+with a repair message. Compare local changes before manually re-exporting with
+`-Force`. Codex uses `~/.agents/skills` directly and needs no second copy.
+
+The repository manifest exporter preserves `skills` selections when it finds the
+same repository path again. Copy the local repository data to a new computer
+before setup; the public defaults cannot identify private skill sources.
+
+Before declaring a computer ready, verify each selected `SKILL.md`, its bundled
+files, and the skill's prerequisite CLIs and authentication. The package list
+installs [TeamCity CLI](https://www.jetbrains.com/help/teamcity/teamcity-cli-get-started.html)
+on Windows and macOS. Authenticate separately with `teamcity auth login --server
+<server-url>` and check `teamcity auth status`. Credentials stay in the local
+credential store. If a newly installed skill is absent from the agent's available
+skills, restart that agent before verifying discovery.
 
 ## Windows setup
 

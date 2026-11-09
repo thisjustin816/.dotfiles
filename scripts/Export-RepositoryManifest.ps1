@@ -31,6 +31,14 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+$existingRepositories = @{}
+if (Test-Path -LiteralPath $OutputPath -PathType Leaf) {
+    $existingManifest = Get-Content -LiteralPath $OutputPath -Raw | ConvertFrom-Json -AsHashtable
+    if ($existingManifest.repositories) {
+        $existingRepositories = $existingManifest.repositories
+    }
+}
+
 $repositoriesRootPath = (Resolve-Path -LiteralPath $RepositoriesRoot -ErrorAction Stop).Path
 $outputFilePath = [IO.Path]::GetFullPath($OutputPath)
 $excludedDirectoryNames = @(
@@ -90,6 +98,10 @@ foreach ($repositoryDirectory in $repositoryDirectories) {
     $repositories[$key] = [Ordered]@{
         path = $manifestPath
         url = $sanitizedOrigin
+    }
+    $existing = $existingRepositories[$key]
+    if ($existing -and $existing.path -eq $manifestPath -and $existing.skills) {
+        $repositories[$key].skills = @($existing.skills)
     }
 }
 
