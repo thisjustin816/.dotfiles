@@ -1,0 +1,79 @@
+{{ if or (eq .chezmoi.os "windows") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env pwsh
+#Requires -Version 7
+
+[CmdletBinding()]
+param ()
+
+$ErrorActionPreference = 'Stop'
+
+$exports = @(
+{{- range $name := keys .repositories | sortAlpha }}
+{{- $repository := index $.repositories $name }}
+{{- if get $repository "skills" }}
+    [pscustomobject]@{
+        Repository = '{{ $repository.path | replace "'" "''" }}'
+        Skills     = @(
+{{- range $repository.skills }}
+            '{{ . | replace "'" "''" }}'
+{{- end }}
+        )
+    }
+{{- end }}
+{{- end }}
+)
+
+$portableRoot = Join-Path $HOME '.agents/skills'
+$claudeRoot = Join-Path $HOME '.claude/skills'
+
+foreach ($export in $exports) {
+    $repositoryPath = Join-Path $HOME $export.Repository
+    $exporter = Join-Path $repositoryPath 'tools/Export-Skill.ps1'
+    if (-not (Test-Path -LiteralPath $exporter -PathType Leaf)) {
+        throw "Skill exporter is missing: $exporter. Check the repository setup."
+    }
+
+    foreach ($skill in $export.Skills) {
+        $sourceSkill = Join-Path $repositoryPath 'skills' $skill
+        if (-not (Test-Path -LiteralPath (Join-Path $sourceSkill 'SKILL.md') -PathType Leaf)) {
+            throw "Skill '$skill' is missing from $repositoryPath."
+        }
+    }
+
+    & $exporter -Name $export.Skills -Destination $portableRoot
+
+    foreach ($skill in $export.Skills) {
+        $portableSkill = Join-Path $portableRoot $skill
+        $sourceSkill = Join-Path $repositoryPath 'skills' $skill
+        $relativeFiles = @(
+            Get-ChildItem -LiteralPath $sourceSkill -Recurse -File |
+                ForEach-Object { $_.FullName.Substring($sourceSkill.Length + 1) }
+        )
+        foreach ($relativeFile in $relativeFiles) {
+            if (-not (Test-Path -LiteralPath (Join-Path $portableSkill $relativeFile) -PathType Leaf)) {
+                throw (
+                    "Installed skill '$skill' is incomplete: $relativeFile is missing. " +
+                    'Repair it with Export-Skill.ps1.'
+                )
+            }
+        }
+
+        if (Test-Path -LiteralPath (Join-Path $HOME '.claude') -PathType Container) {
+            $null = New-Item -ItemType Directory -Path $claudeRoot -Force
+            $runtimeSkill = Join-Path $claudeRoot $skill
+            if (-not (Test-Path -LiteralPath $runtimeSkill)) {
+                Copy-Item -LiteralPath $portableSkill -Destination $runtimeSkill -Recurse
+            }
+            foreach ($relativeFile in $relativeFiles) {
+                if (-not (Test-Path -LiteralPath (Join-Path $runtimeSkill $relativeFile) -PathType Leaf)) {
+                    throw (
+                        "Claude skill '$skill' is incomplete: $relativeFile is missing. " +
+                        "Compare it with $portableSkill."
+                    )
+                }
+            }
+        }
+        Write-Output "Verified installed skill: $skill"
+    }
+}
+{{ end -}}

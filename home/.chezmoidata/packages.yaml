@@ -8,6 +8,7 @@ packages:
       - git-lfs
       - hashicorp/tap/terraform
       - jandedobbeleer/oh-my-posh/oh-my-posh
+      - jetbrains/utils/teamcity
       - node
       - powershell
       - ripgrep
@@ -43,6 +44,7 @@ packages:
       - Google.Chrome
       - Hashicorp.Terraform
       - JanDeDobbeleer.OhMyPosh
+      - JetBrains.TeamCityCLI
       - Microsoft.AzureCLI
       - Microsoft.DotNet.SDK.8
       - Microsoft.NuGet
