@@ -1,0 +1,128 @@
+{{ if or (eq .chezmoi.os "windows") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env pwsh
+#Requires -Version 7
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+$repositories = @(
+{{ range $name := keys .repositories | sortAlpha -}}
+{{ $repository := index $.repositories $name }}
+    [PSCustomObject]@{
+        Name         = {{ $name | quote }}
+        RelativePath = {{ $repository.path | quote }}
+        Url          = {{ $repository.url | quote }}
+    }
+{{ end -}}
+)
+
+$homeRoot = [IO.Path]::GetFullPath($HOME)
+if ($IsWindows) {
+    $pathComparison = [StringComparison]::OrdinalIgnoreCase
+    $pathComparer = [StringComparer]::OrdinalIgnoreCase
+}
+else {
+    $pathComparison = [StringComparison]::Ordinal
+    $pathComparer = [StringComparer]::Ordinal
+}
+$homePrefix = (
+    $homeRoot.TrimEnd([IO.Path]::DirectorySeparatorChar) +
+    [IO.Path]::DirectorySeparatorChar
+)
+$targetPathsSeen = [Collections.Generic.HashSet[String]]::new($pathComparer)
+$sourcePath = {{ .chezmoi.workingTree | quote }}
+
+foreach ($repository in $repositories) {
+    $targetPath = [IO.Path]::GetFullPath((Join-Path $homeRoot $repository.RelativePath))
+    if (-not $targetPath.StartsWith($homePrefix, $pathComparison)) {
+        throw "Repository path '$($repository.RelativePath)' escapes the user home directory."
+    }
+    if (-not $targetPathsSeen.Add($targetPath)) {
+        throw "More than one repository entry targets $targetPath."
+    }
+
+    if (Test-Path -LiteralPath $targetPath) {
+        $gitMarker = Join-Path $targetPath '.git'
+        if (-not (Test-Path -LiteralPath $gitMarker)) {
+            Write-Warning -Message "$targetPath exists but is not a Git working copy."
+            continue
+        }
+
+        if ($targetPath.Equals($sourcePath, $pathComparison)) {
+            Write-Output "Skipping chezmoi source checkout: $($repository.Name). Use chezmoi update to pull it."
+            continue
+        }
+
+        $isConfigurationRepository = (
+            (Split-Path -Path $targetPath -Parent).Equals($homeRoot, $pathComparison) -and
+            (Split-Path -Path $targetPath -Leaf).StartsWith('.')
+        )
+        if ($isConfigurationRepository) {
+            Write-Output "Fetching $($repository.Name)"
+            & git -C $targetPath fetch --all --prune
+            if ($LASTEXITCODE -ne 0) {
+                throw "Git failed to fetch $targetPath."
+            }
+
+            $changes = & git -C $targetPath status --porcelain
+            if ($LASTEXITCODE -ne 0) {
+                throw "Git failed to inspect $targetPath."
+            }
+            if ($changes) {
+                Write-Warning -Message "$targetPath has uncommitted changes; skipping update."
+            }
+            else {
+                $branch = & git -C $targetPath symbolic-ref --quiet --short HEAD
+                if ($LASTEXITCODE -notin 0, 1) {
+                    throw "Git failed to inspect the branch in $targetPath."
+                }
+
+                if (-not $branch) {
+                    Write-Warning -Message "$targetPath has a detached HEAD; skipping update."
+                }
+                else {
+                    $upstream = & git -C $targetPath rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>$null
+                    if ($LASTEXITCODE -ne 0) {
+                        Write-Warning -Message "$targetPath has no upstream branch; skipping update."
+                    }
+                    else {
+                        $counts = & git -C $targetPath rev-list --left-right --count 'HEAD...@{upstream}'
+                        if ($LASTEXITCODE -ne 0) {
+                            throw "Git failed to compare $targetPath with $upstream."
+                        }
+                        $ahead, $behind = $counts -split '\s+'
+                        if ([int]$ahead -gt 0 -and [int]$behind -gt 0) {
+                            Write-Warning -Message "$targetPath has diverged from $upstream; skipping update."
+                        }
+                        elseif ([int]$behind -gt 0) {
+                            Write-Output "Updating $($repository.Name) from $upstream"
+                            & git -C $targetPath -c merge.autoStash=false merge --ff-only --no-edit '@{upstream}'
+                            if ($LASTEXITCODE -ne 0) {
+                                throw "Git failed to fast-forward $targetPath."
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Write-Output "Repository status: $($repository.Name)"
+        & git -C $targetPath status --short --branch
+        if ($LASTEXITCODE -ne 0) {
+            throw "Git failed to inspect $targetPath."
+        }
+        continue
+    }
+
+    $parentPath = Split-Path -Path $targetPath -Parent
+    $null = New-Item -Path $parentPath -ItemType Directory -Force
+
+    Write-Output "Cloning $($repository.Name) into $targetPath"
+    & git clone $repository.Url $targetPath
+    if ($LASTEXITCODE -ne 0) {
+        throw "Git failed to clone $($repository.Url)."
+    }
+}
+{{ end -}}
