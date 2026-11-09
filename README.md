@@ -12,7 +12,7 @@ Chezmoi manages:
 - The macOS zsh profile
 - Applications and command-line tools
 - PowerShell modules
-- Repository cloning
+- Repository cloning and configuration repository updates
 
 VS Code settings, keybindings, profiles, and extensions use VS Code Settings
 Sync instead. Credentials and private repository information stay out of the
@@ -79,7 +79,12 @@ checkout as the source. Add `-WhatIf` to list the packages it would
 install and show `chezmoi diff` without changing anything.
 
 The repository script clones missing repositories and reports the status of
-existing repositories. It never pulls, resets, or overwrites a working copy.
+existing checkouts. On each apply, it also fetches declared repositories
+directly under the home directory whose names start with `.`, such as
+`.agents`, `.codex`, and `.claude`. It fast-forwards their clean tracking
+branches when behind. It reports dirty, detached, or diverged checkouts and
+branches without an upstream, leaving them for you to update. It never
+stashes, resets, rebases, pushes, or switches branches.
 
 ## macOS setup
 
@@ -161,6 +166,20 @@ Pull the source repository and apply changes:
 ```text
 chezmoi update
 ```
+
+This also updates declared configuration repositories directly under the home
+directory with names starting with `.`, including `.agents`, `.codex`, and
+`.claude`. Clean checkouts update to their current branch's upstream. Other
+declared repositories are cloned if missing and have their local status
+reported, without fetching or updating. Repositories do not have to be public
+to qualify; the rule applies to both the public and local repository lists.
+Check the reported status for configuration repositories that need manual
+attention, including branches with unpushed commits. Fetch or fast-forward
+errors stop the apply and report which repository failed.
+
+`chezmoi apply` runs the same repository check without pulling the dotfiles
+source repository. The script skips the source checkout itself; `chezmoi
+update` handles that checkout before applying changes.
 
 Inspect local drift:
 
