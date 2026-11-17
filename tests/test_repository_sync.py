@@ -89,6 +89,28 @@ class RepositorySyncTests(unittest.TestCase):
     def assert_head(self, expected):
         self.assertEqual(self.git(self.checkout, "rev-parse", "HEAD"), expected)
 
+    def test_claude_migration_keeps_private_runtime_backup(self):
+        (self.producer / 'settings.json').write_text('{"local": "preserved"}')
+        (self.producer / '.gitignore').write_text('backups/\n')
+        self.git(self.producer, 'add', 'settings.json', '.gitignore')
+        self.git(self.producer, 'commit', '-m', 'Fixture settings')
+        self.git(self.producer, 'push')
+        self.git(self.checkout, 'pull', '--ff-only')
+        target = self.home / '.claude'
+        self.checkout.rename(target)
+        self.checkout = target
+        self.configure('.claude')
+        (target / 'settings.json').chmod(0o600)
+        self.git(self.producer, 'rm', 'settings.json')
+        self.git(self.producer, 'commit', '-m', 'Fixture migration')
+        self.git(self.producer, 'push')
+        self.sync()
+        backup = target / 'backups/settings.json.pre-untrack'
+        self.assertEqual(backup.read_text(), '{"local": "preserved"}')
+        self.assertFalse((target / 'settings.json').exists())
+        if os.name != 'nt':
+            self.assertEqual(backup.stat().st_mode & 0o777, 0o600)
+
     def test_clones_missing_repository(self):
         shutil.rmtree(self.checkout)
         self.sync()

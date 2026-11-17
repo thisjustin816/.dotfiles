@@ -198,6 +198,24 @@ settings.
 The Homebrew install, the Xcode Command Line Tools prompt, and the GitHub
 browser sign-in need you at the Mac.
 
+## Agent configuration defaults
+
+After marketplace registration, apply runs `~/.claude/scripts/Merge-ClaudeSettings.ps1` when
+installed. It merges reviewed `settings.portable.json` defaults into ignored local settings,
+preserving picker choices, directory marketplace paths, and other local overrides. The private
+Claude config repository owns the defaults and merge behavior; public dotfiles holds no work
+settings. Runtime settings are backed up before configuration-repository updates so the merger
+can restore them when an update removes their old tracked copy.
+
+Shared personal rules originate in `~/.agents/instructions/core.md`. The apply checks the
+native `.codex/AGENTS.md` block and the complete Claude skill mirror tree without rewriting
+tracked files or local skill edits. If it reports drift, run
+`sync-agent-content` and review the source and native changes together.
+
+For the first migration on an existing host, preserve any dirty Claude settings before
+updating its repository. Follow that repository's README, then run apply. A direct pull does
+not apply portable defaults; run the merger before starting another Claude session.
+
 ## Daily use
 
 Pull the source repository and apply changes:

@@ -60,6 +60,21 @@ foreach ($repository in $repositories) {
             (Split-Path -Path $targetPath -Leaf).StartsWith('.')
         )
         if ($isConfigurationRepository) {
+            # Preserve runtime settings before a tracked-to-local settings migration removes the file.
+            $runtimeSettings = Join-Path $targetPath 'settings.json'
+            if ((Split-Path -Path $targetPath -Leaf) -eq '.claude' -and
+                (Test-Path -LiteralPath $runtimeSettings)) {
+                $backupDirectory = New-Item -ItemType Directory -Path (Join-Path $targetPath 'backups') -Force
+                $backupPath = Join-Path $backupDirectory.FullName 'settings.json.pre-untrack'
+                $backupFile = New-Item -ItemType File -Path $backupPath -Force
+                if ($IsWindows) {
+                    Get-Acl -LiteralPath $runtimeSettings | Set-Acl -LiteralPath $backupFile.FullName
+                }
+                else {
+                    $backupFile.UnixFileMode = (Get-Item -LiteralPath $runtimeSettings).UnixFileMode
+                }
+                Copy-Item -LiteralPath $runtimeSettings -Destination $backupFile.FullName -Force
+            }
             Write-Output "Fetching $($repository.Name)"
             & git -C $targetPath fetch --all --prune
             if ($LASTEXITCODE -ne 0) {
