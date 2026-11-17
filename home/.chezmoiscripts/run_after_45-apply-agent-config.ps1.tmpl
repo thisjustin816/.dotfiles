@@ -1,0 +1,57 @@
+{{ if or (eq .chezmoi.os "windows") (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env pwsh
+#Requires -Version 7.3
+
+[CmdletBinding()]
+param ([string]$HomeDirectory = $HOME)
+
+$ErrorActionPreference = 'Stop'
+$claudeRoot = Join-Path $HomeDirectory '.claude'
+$merger = Join-Path $claudeRoot 'scripts/Merge-ClaudeSettings.ps1'
+if (Test-Path -LiteralPath $merger) {
+    & $merger `
+        -PortablePath (Join-Path $claudeRoot 'settings.portable.json') `
+        -SettingsPath (Join-Path $claudeRoot 'settings.json')
+}
+elseif (Test-Path -LiteralPath $claudeRoot) {
+    Write-Warning 'Portable Claude settings helper is absent; existing settings were preserved.'
+}
+
+$agentsRoot = Join-Path $HomeDirectory '.agents'
+$checker = Join-Path $agentsRoot 'scripts/sync-instructions.py'
+$target = Join-Path $HomeDirectory '.codex/AGENTS.md'
+$python = Get-Command -Name python3, python -CommandType Application -ErrorAction SilentlyContinue |
+    Select-Object -First 1
+if ((Test-Path -LiteralPath $checker) -and (Test-Path -LiteralPath $target)) {
+    if ($python) {
+        & $python.Source $checker `
+            --source (Join-Path $agentsRoot 'instructions/core.md') `
+            --target $target `
+            --check
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning 'Shared instructions need attention; run the sync-agent-content workflow.'
+        }
+    }
+    else {
+        Write-Warning 'Python 3 is unavailable; the shared instruction check did not run.'
+    }
+}
+
+$mirrorChecker = Join-Path $agentsRoot 'scripts/check-skill-sync.py'
+$runtimeSkills = Join-Path $claudeRoot 'skills'
+if ((Test-Path -LiteralPath $mirrorChecker) -and (Test-Path -LiteralPath $runtimeSkills)) {
+    if ($python) {
+        & $python.Source $mirrorChecker `
+            --source $agentsRoot `
+            --runtime $runtimeSkills `
+            --variant ship `
+            --variant codebase-tutor
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning 'Claude skill mirrors need attention; run the sync-agent-content workflow.'
+        }
+    }
+    else {
+        Write-Warning 'Python 3 is unavailable; the skill mirror check did not run.'
+    }
+}
+{{ end -}}

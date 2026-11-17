@@ -2,8 +2,8 @@
 #!/usr/bin/env pwsh
 #Requires -Version 7
 
-# Registers directory marketplaces with Claude Code. Claude stores the absolute path,
-# so settings.json carries no machine-specific path. Runs after the repositories sync.
+# Registers directory marketplaces after repository sync. Claude writes absolute paths
+# into its untracked runtime settings; portable defaults contain no directory sources.
 
 [CmdletBinding()]
 param()
